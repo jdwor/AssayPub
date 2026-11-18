@@ -1,6 +1,8 @@
 # Builds the public site and publishes it on GitHub Pages whenever main changes.
 #
-# One-time setup: in the repository's Settings > Pages, set "Source" to "GitHub Actions".
+# One-time setup: in the repository's Settings > Pages, set "Source" to "GitHub Actions". With the other choice,
+# "Deploy from a branch", GitHub publishes the repository's own files with the README as the home page, and this
+# workflow fails at its "configure-pages" step.
 #
 # Only the public build runs here (site/build.py with no flag), so an edition whose status is "draft" is never
 # published. The site's address is passed to the build so that the feed carries full links.
@@ -26,6 +28,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: false
       - id: pages
         uses: actions/configure-pages@v6
       - name: Build the site
