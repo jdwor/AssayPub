@@ -1,0 +1,50 @@
+{# One row of wells (their number is `wells_per_row` in site.yaml). A ring is an empty well, a ring with a dot is a shortlisted work,
+   a filled well is a selected work, and a double ring is a lead selection. #}
+{% macro dots(row, edition, root, ri=0) %}
+<div class="dots">
+  {% for cell in row.cells %}
+  {% if cell.kind == 'selected' %}
+  {% set w = cell.work %}
+  <a class="d {{ 'lead' if w.tier == 'lead' else 'sel' }}" href="{{ root }}works/{{ w.slug }}/" data-w="{{ cell.well }}" style="--i: {{ ri + loop.index0 }}"
+     data-k="{{ cell.well }} · {{ 'Lead selection' if w.tier == 'lead' else 'Selected' }}" data-t="{{ w.title }}" data-m="{{ w.org or (w.authors[:2]|join(', ')) }} · {{ w.date|date }}"
+     aria-label="{{ cell.well }}, {{ 'lead selection' if w.tier == 'lead' else 'selected' }}: {{ w.title }}"></a>
+  {% elif cell.kind == 'shortlisted' %}
+  {% set s = cell.entry %}
+  <a class="d short" href="{{ root }}editions/{{ edition.slug }}/shortlist/#{{ cell.well }}"
+     data-k="{{ cell.well }} · Shortlisted" data-t="{{ s.title }}" data-m="{{ s.org }}{% if s.org and s.date %} · {% endif %}{{ s.date|date('my') }}"
+     aria-label="{{ cell.well }}, shortlisted: {{ s.title }}"></a>
+  {% else %}
+  <span class="d"></span>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{# The same plate at thumbnail size, without links. #}
+{% macro mini(edition) %}
+<span class="mini" aria-hidden="true">{% for row in edition.plate %}{% for cell in row.cells %}<i{% if cell.kind == 'selected' %} class="x"{% elif cell.kind == 'shortlisted' %} class="s"{% endif %}></i>{% endfor %}{% endfor %}</span>
+{% endmacro %}
+
+{# A selected work in a list. #}
+{% macro work_item(w, root, show_edition=false) %}
+<li{% if w.tier == 'lead' %} class="lead"{% endif %}>
+  <a class="code" href="{{ root }}works/{{ w.slug }}/" tabindex="-1" aria-hidden="true">{{ w.well }}</a>
+  <div>
+    <h3><a href="{{ root }}works/{{ w.slug }}/">{{ w.title }}</a></h3>
+    <p class="meta">{% if show_edition %}No. {{ w.edition|int }} · {% endif %}{{ w.org or (w.authors[:3]|join(', ')) }} · {{ w.date|date }} · {{ w.importance }} · {{ w.evidence }}</p>
+    <p class="txt">{{ w.standfirst|mdi }}</p>
+  </div>
+</li>
+{% endmacro %}
+
+{# A shortlisted work in a list. Its well is the anchor that the cover's dots link to. #}
+{% macro short_item(s, well, show_edition=none) %}
+<li id="{{ well }}">
+  <span class="code">{{ well }}</span>
+  <div>
+    <h3><a href="{{ s.url }}" rel="noopener">{{ s.title }}</a></h3>
+    <p class="meta">{% if show_edition is not none %}No. {{ show_edition }} · {% endif %}{{ s.org }}{% if s.org and s.date %} · {% endif %}{{ s.date|date('my') }}{% if s.type_label %} · {{ s.type_label }}{% endif %}</p>
+    {% if s.note %}<p class="txt">{{ s.note|mdi }}</p>{% endif %}
+  </div>
+</li>
+{% endmacro %}

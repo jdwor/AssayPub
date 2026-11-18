@@ -1,0 +1,315 @@
+# Edition 4: October 2026. Selected works live in content/works/ and name this edition and their well.
+# `shortlist` is the rest of the plate: works considered and not selected.
+number: 4
+slug: '004'
+title: October 2026
+subject: Volume
+cover: '#1fcf83'
+dek: Work in AI for science released in October 2026.
+period:
+- '2026-10-01'
+- '2026-10-31'
+published: '2026-11-17'
+status: pilot
+funnel:
+  candidates: 793
+note: |-
+  OpenAI released about 720 machine-written mathematical manuscripts at once, withdrew three the next day and revised 14 ({{openai-math-release}}). In the same month one algorithm, credited to Claude, refuted two central hypotheses about 3SUM and shortest paths, and within four weeks other groups had simplified and extended it ({{subquadratic-3sum-subcubic-apsp}}).
+
+  The 3SUM result was written up by two complexity theorists who took responsibility for it. In the bulk release, the Lean code for about 38 manuscripts does not state the paper's main theorem. A Prague group that ran its system on 3,800 open problems counts about 200 solved, four of them confirmed by the authors of the source papers ({{bolzano-automated-open-problems}}). arXiv, after a record 40,363 submissions in September, limited each submitter to two papers a month ({{fair-moderation-equitable-access-and-ai}}), and an analysis of its records found submissions outside computer science running 17% above trend since December 2025 ({{arxiv-apocalypse}}).
+
+  Where output could be measured against a standard, most of it was routine. Agents improved on the best published model on all 20 scientific benchmarks in one study, almost entirely by tuning and larger models ({{agents-climb-scientific-hills}}). Hypotheses written by language models lay far from existing papers and still inside directions the literature already covers ({{llms-extend-known-research}}). Shown an agent's plan beside a senior researcher's correction, four of five models preferred the agent's ({{scipivot-pi-judgment}}), and 114 of 135 agent-written papers failed an integrity check in a benchmark led by Carnegie Mellon ({{into-the-unknown}}). A Los Alamos essay argues that when reasoning is cheap, choosing questions, running experiments and validating claims set the pace ({{when-scientific-cognition-is-no-longer-scarce}}).
+
+  <!-- rows C and D -->
+
+  In the physical sciences, developers of learned climate models report where their own emulators failed outside training conditions ({{ai-pathways-weather-to-climate}}), and an agent that explained new optical spectra with first-principles calculations did so for one material, with its prediction untested ({{ai-theorist-rucl3}}).
+
+  Eleven companies pledged $2.4 billion in tools and computing credits to the federal Genesis Mission, on terms the White House did not state ({{golden-age-summit-fact-sheet}}).
+shortlist:
+- well: A1
+  title: The Agentic Scientist
+  url: https://github.com/SakanaAI/AI-Scientist-v3
+  org: Sakana AI
+  date: '2026-10-11'
+  type: software
+  beat: autonomous-discovery
+  note: Open-source pipeline that 'treats coding agents as AI scientists'.
+  id: the-agentic-scientist
+- well: A5
+  title: 'RIDAR: Safeguarding Research Integrity in Autonomous Research Agents via Automated Detection and Runtime
+    Intervention'
+  url: https://arxiv.org/abs/2610.31372
+  org: Tsinghua University; Z.ai
+  date: '2026-10-22'
+  type: paper
+  beat: autonomous-discovery
+  note: A detector for 14 kinds of research-integrity violation, run on 300 recorded sessions of research agents
+    across 50 tasks, found at least one violation in 99.7% of them.
+  id: ridar-safeguarding-research-integrity-in-autonom
+- well: B2
+  title: 'Navier-Stokes lost in translation: Why Lean verification of AI autoformalisation does not guarantee correct
+    natural language proofs'
+  url: https://arxiv.org/abs/2610.08144
+  org: King's College London and the University of Cambridge
+  date: '2026-10-06'
+  type: paper
+  beat: mathematics-theory
+  note: Reports that OpenAI's Navier–Stokes paper ({{navier-stokes-blowup}}) and its Lean proof differ at two lemmas
+    examined in detail.
+  id: navier-stokes-lost-in-translation-why
+- well: B5
+  title: The Mathocalypse
+  url: https://scottaaronson.blog/?p=10169
+  org: Shtetl-Optimized
+  date: '2026-10-07'
+  type: essay
+  beat: mathematics-theory
+  note: Scott Aaronson's account of OpenAI's release ({{openai-math-release}}), written the next day. It argues
+    against treating open problems as off limits to AI and reports that almost none of the proofs had yet been understood
+    by a person.
+  id: the-mathocalypse
+- well: B6
+  title: 'TheoPhysEval: Assessing AI agents at autonomous theoretical physics problem solving'
+  url: https://arxiv.org/abs/2610.16733
+  org: ''
+  date: '2026-10-09'
+  type: benchmark
+  beat: mathematics-theory
+  note: Working theoretical physicists contributed 50 unpublished research-level problems with checkable answers
+    and tested five off-the-shelf AI agents on them with no human hints.
+  id: theophyseval-assessing-ai-agents-at-autonomous
+- well: B7
+  title: 'At the Limits of Computability: Steps Towards Autonomous AI Discovery on the Busy Beaver Frontier'
+  url: https://arxiv.org/abs/2610.22603
+  org: Google DeepMind
+  date: '2026-10-15'
+  type: paper
+  beat: mathematics-theory
+  note: A Gemini-based pipeline found compact rules that describe the behavior of eleven six-state Turing machines
+    whose halting is unresolved, and proved the rules in Lean.
+  id: at-the-limits-of-computability-steps
+- well: B8
+  title: The Exponential Time Hypothesis is False
+  url: https://github.com/openai/math/tree/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026
+  org: OpenAI
+  date: '2026-10-26'
+  type: paper
+  beat: mathematics-theory
+  note: A claimed refutation of a central conjecture in complexity theory. OpenAI said an independent group of computer
+    scientists would examine the proof.
+  id: the-exponential-time-hypothesis-is-false
+- title: A deep learning-generated hASIC1a miniprotein inhibitor confers neuroprotection in stroke
+  url: https://doi.org/10.64898/2026.10.04.755611
+  org: University of Copenhagen
+  date: '2026-10-09'
+  type: paper
+  beat: life-sciences
+  note: Designs two miniproteins against the acid-sensing ion channel hASIC1a, screens them by automated patch clamp,
+    solves the bound structure, and reports that one of them cuts infarct volume by more than half in a mouse model
+    of ischaemic stroke.
+  id: a-deep-learning-generated-hasic1a-miniprotein
+  well: C1
+- title: Poisoning the corpora of protein design systems during pre-training and retrieval
+  url: https://arxiv.org/abs/2610.21200
+  org: ''
+  date: '2026-10-15'
+  type: paper
+  beat: life-sciences
+  note: Shows that inserting as few as 200 contaminated sequences into a protein language model's pre-training data,
+    or a single crafted record into a retrieval corpus, can make a protein generator emit attacker-chosen sequences
+    while behaving normally otherwise.
+  id: poisoning-the-corpora-of-protein-design
+  well: C2
+- title: 'Genetic Perturbation Prediction Models Fail Out-of-Distribution: A Rigorous Benchmark and Systematic Evaluation'
+  url: https://doi.org/10.64898/2026.10.16.759604
+  org: Elucidata Corporation
+  date: '2026-10-19'
+  type: benchmark
+  beat: life-sciences
+  note: Stress-tests 20 models that predict transcriptional responses to gene inactivation on splits that separate
+    functionally distinct regions of transcriptional space, and reports that performance falls substantially and
+    that single-cell foundation model embeddings give no reliable advantage over tuned simple baselines.
+  id: genetic-perturbation-prediction-models-fail-out
+  well: C3
+- title: Can agents reliably design therapeutic antibodies?
+  url: https://arxiv.org/abs/2611.00558
+  org: ''
+  date: '2026-10-31'
+  type: paper
+  beat: life-sciences
+  note: Separates how faithfully language-model agents follow molecular-editing instructions from how well they
+    optimize, using ten expert-validated affinity tasks, and finds that tool access improves instruction following
+    while reducing optimization performance.
+  id: can-agents-reliably-design-therapeutic-antibodie
+  well: C6
+- title: Synthesis-aware generative design in trillion-scale chemical spaces for automated drug discovery
+  url: https://doi.org/10.64898/2026.10.01.755933
+  org: KAIST and HITS
+  date: '2026-10-08'
+  type: paper
+  beat: chemistry-medicine
+  note: Encodes reaction logic in a generative flow network so that candidates drawn from an 11-trillion-compound
+    make-on-demand space can be made on automated synthesis hardware, and reports a 96% synthesis success rate and
+    a 50% functional hit rate in prospective testing against an SLC1A5 variant with a cryptic interface.
+  well: D2
+  id: synthesis-aware-generative-design-in-trillion
+- title: 'An AI-Enabled Translational Drug Discovery Framework for NALCN Channelopathy: From High-Throughput Screening
+    to Therapeutic Candidate'
+  url: https://doi.org/10.64898/2026.10.08.757476
+  org: Institut de Génomique Fonctionnelle, Montpellier, with Mahidol University
+  date: '2026-10-09'
+  type: paper
+  beat: chemistry-medicine
+  note: Screens about 1,200 approved drugs in a cell assay for an ultra-rare gain-of-function channel disease, uses
+    a co-folding model to rank the eleven hits by predicted binding mode, and reports that the selected candidate,
+    aprepitant, inhibits the channel in patch clamp and rescues the movement phenotypes of a C. elegans gain-of-function
+    model.
+  well: D3
+  id: an-ai-enabled-translational-drug-discovery
+- title: Accelerated discovery and optimization of a potent and selective MMP12 inhibitor with the machine learning
+    platform CAMOLE-1
+  url: https://doi.org/10.64898/2026.10.21.755545
+  org: Calico Life Sciences
+  date: '2026-10-26'
+  type: paper
+  beat: chemistry-medicine
+  note: An all-atom diffusion model for non-canonical peptide design drove about a year of iterative optimization
+    and 270 synthesized peptides to a potent and selective MMP12 inhibitor, with crystal structures of the bound
+    peptides.
+  id: accelerated-discovery-and-optimization-of-a
+  well: D4
+- title: Small molecule structure elucidation from NMR spectra with generative and reasoning models
+  url: https://doi.org/10.64898/2026.10.29.762711
+  org: Princeton University, with FutureHouse and Edison Scientific co-authors
+  date: '2026-10-31'
+  type: paper
+  beat: chemistry-medicine
+  note: Pairs an atomic flow-matching model that predicts structures from a molecular formula and one-dimensional
+    NMR spectra with a reasoning agent that refines the candidates, and reports elucidating four new natural products
+    at the accuracy of human chemists.
+  id: small-molecule-structure-elucidation-from-nmr
+  well: D6
+- well: E3
+  title: Global probabilistic forecasting of air pollution
+  url: https://arxiv.org/abs/2610.25941
+  org: LUT University; University of Helsinki
+  date: '2026-10-19'
+  type: paper
+  beat: physical-world
+  note: Foehn, a generative model for kilometer-scale forecasts of fine-particle pollution, outperformed the operational
+    forecast at three stations in four over a year of retrospective forecasts.
+  id: global-probabilistic-forecasting-of-air-pollutio
+- well: E4
+  title: 'Batched NN 4D-Var: a performant hybrid model framework for the Integrated Forecasting System'
+  url: https://arxiv.org/abs/2610.32582
+  org: ECMWF
+  date: '2026-10-23'
+  type: paper
+  beat: physical-world
+  note: A neural-network correction for model error, trained inside ECMWF's forecasting system from observations,
+    improved forecasts on unseen periods only when the training windows were processed in random batches.
+  id: batched-nn-4d-var-a-performant
+- well: F1
+  title: How Heavily Are PhD Students Offloading Their Scientific Writing to AI? Evidence from US STEM PhD Dissertations
+  url: https://www.nber.org/papers/w35859
+  org: Gross, Shvadron and Zhang, NBER
+  date: '2026-10-05'
+  type: paper
+  beat: science-of-science
+  note: Finds AI-assisted writing in 29% of US STEM dissertations filed in 2026.
+  id: how-heavily-are-phd-students-offloading
+- well: F4
+  title: Tools>Theories
+  url: https://www.aipolicyperspectives.com/p/toolstheories
+  org: AI Policy Perspectives (Google DeepMind)
+  date: '2026-10-28'
+  type: essay
+  beat: science-of-science
+  note: A review of Alexander Krauss's study of 761 discoveries, which attributes almost all of them to newly developed
+    tools and methods. The essay raises four objections and argues for funding toolmakers and data curation.
+  id: tools-theories
+- well: G1
+  title: Hierarchical universal open structure dataset for atomistic modeling (MAD-COSMO and MAD-CORE)
+  url: https://arxiv.org/abs/2610.21771
+  org: ''
+  date: '2026-10-15'
+  type: dataset
+  beat: infrastructure
+  note: A protocol that stratifies atomistic datasets into nested subsets using a metric built from the latent spaces
+    of several universal interatomic potentials, applied to consolidate most currently available open structural
+    datasets.
+  id: hierarchical-universal-open-structure-dataset-fo
+- well: G3
+  title: FormalArXiv
+  url: https://huggingface.co/datasets/uw-math-ai/FormalArXiv
+  org: University of Washington Math AI Lab
+  date: '2026-10-19'
+  type: benchmark
+  beat: infrastructure
+  note: A small Lean 4 benchmark of research-level statements taken from papers posted to arXiv in August 2026,
+    sourced from LemmaBench.
+  id: formalarxiv
+- well: G4
+  title: 'KAPPA: Checking the Proofs in Statistics Papers with Lean 4 and Language Model Agents'
+  url: https://arxiv.org/abs/2610.35596
+  org: Purdue University
+  date: '2026-10-26'
+  type: software
+  beat: infrastructure
+  note: Open-source software that directs language-model agents to translate the proofs of a statistics paper into
+    Lean 4 and report, result by result, what was verified and where a proof fails.
+  id: kappa-checking-the-proofs-in-statistics
+- well: H1
+  title: 'Fair Moderation, Equitable Access, and AI: arXiv''s Updated Rate Limit Policy'
+  url: https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/
+  org: arXiv
+  date: '2026-10-01'
+  type: initiative
+  beat: institutions
+  note: arXiv announces that every submitter is limited to two new submissions per calendar month, with at most
+    three active at any time, as a stopgap while it works out best practice for authors using advanced AI tools.
+  id: fair-moderation-equitable-access-and-ai
+- well: H2
+  title: International, cross-sector collaboration commits nearly $2 billion to build foundational data for AI models
+    to predict and treat disease (Virtual Biology Initiative expansion)
+  url: https://biohub.org/news/virtual-biology-initiative-expansion/
+  org: Biohub, US DOE, NIH and partners
+  date: '2026-10-07'
+  type: initiative
+  beat: institutions
+  note: Biohub, DOE and NIH announced an expansion of the Virtual Biology Initiative, an effort to generate open,
+    AI-ready biological data for predictive models of cells.
+  id: international-cross-sector-collaboration-commits
+- well: H4
+  title: Kevin Bryan on AI and Innovation
+  url: https://www.macroscience.org/p/kevin-bryan-on-ai-and-innovation
+  org: Macroscience
+  date: '2026-10-08'
+  type: essay
+  beat: institutions
+  note: A lecture by economist Kevin Bryan, introduced by IFP's Matthew Esche, on how to reason about AI's effect
+    on science and growth.
+  id: kevin-bryan-on-ai-and-innovation
+- well: H5
+  title: Commission launches RAISE pledging initiative to boost AI support for researchers across Europe (RAISE
+    AI in Science Enablers)
+  url: https://ec.europa.eu/commission/presscorner/detail/es/ip_26_2175
+  org: European Commission
+  date: '2026-10-15'
+  type: compute-programme
+  beat: institutions
+  note: At the European AI in Science Summit in Dublin the Commission launched a scheme under which companies and
+    philanthropies pledge in-kind resources, including model access, compute, software licenses, data and training.
+  id: commission-launches-raise-pledging-initiative-to
+- well: H6
+  title: AI for Science expands to foundations and research institutions
+  url: https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions
+  org: Anthropic
+  date: '2026-10-28'
+  type: compute-programme
+  beat: institutions
+  note: Anthropic named 20 partners in an expansion of its program that gives free model credits to scientists,
+    among them six funders and societies that will redistribute credits to researchers and six research institutions.
+  id: ai-for-science-expands-to-foundations
+note_bio: |
+  In biology the volume was designs, and measurement was the step not taken. The distributed-bottleneck case is preclinical: 35,000 designs produced three IgE binders and twenty that strip it from cells, and the mouse result rests on seven treated animals at P = 0.057 by litter ({{anthropic-drug-development}}). Nine replayed optimization campaigns met their objectives wherever the property models were accurate on the chemistry proposed, and no compound was synthesized ({{magi-industrial-campaigns}}). Cropping targets cut folding time 88%, yet yeast display enriched the arms in a different order ({{epitope-excision-binder-design}}); restoring one matrix multiplication moved BRCA1 scoring from below chance to 0.869 ({{evo2-fp8-checkpoints}}).

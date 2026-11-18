@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% from "macros.html" import dots %}
+{% block title %}{% if is_home %}{{ site.name }}: {{ site.tagline }}{% else %}No. {{ edition.number }}, {{ edition.title }} | {{ site.name }}{% endif %}{% endblock %}
+{% block description %}{{ edition.dek }}{% endblock %}
+{% block body_class %}cover-page{% endblock %}
+{% block page %}
+{% set ed = root ~ 'editions/' ~ edition.slug ~ '/' %}
+<div class="cover">
+  <header class="mast">
+    <h1>{{ site.name }}</h1>
+    <p class="cap tagline">{{ site.tagline }}</p>
+    <div class="meta"><span class="stack">
+      <span class="no">No. {{ edition.number }}</span>
+      {% if edition.status_short %}<span class="cap">{{ edition.status_short }}</span>{% endif %}
+    </span></div>
+  </header>
+
+  <main id="main" class="inside">
+    {# A phone has no room to set titles beside the wells. There the plate is printed whole, under the masthead,
+       and the rows below list each topic's titles without wells. This block is not shown on wider screens. #}
+    <div class="plate" role="group" aria-label="Plate">
+      {% for row in edition.plate %}
+      <a class="pr" href="#row-{{ row.beat.row }}" aria-label="Row {{ row.beat.row }}, {{ row.beat.name }}">{{ row.beat.row }}</a>
+      {{ dots(row, edition, root, loop.index0) }}
+      {% endfor %}
+    </div>
+    <div class="matrix">
+      {% for row in edition.plate %}
+      <section class="r" id="row-{{ row.beat.row }}" aria-label="{{ row.beat.name }}">
+        <b aria-hidden="true">{{ row.beat.row }}</b>
+        {{ dots(row, edition, root, loop.index0) }}
+        <div class="items">
+          <a class="cap topic" href="{{ root }}topics/{{ row.beat.slug }}/">{{ row.beat.name }}</a>
+          {% for w in row.works %}
+          <a class="item{% if w.tier == 'lead' %} lead{% endif %}" data-w="{{ w.well }}" href="{{ root }}works/{{ w.slug }}/"><i>{{ w.well }}</i>{{ w.short }}</a>
+          {% else %}
+          <span class="none">No selection</span>
+          {% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+
+    <aside class="panel" aria-label="This edition">
+      {# The month, then the editorial's subject as the heading. An edition without a subject is headed "Editorial". #}
+      <p class="cap kicker">{{ edition.period_label }}</p>
+      <h2>{{ edition.subject or 'Editorial' }}</h2>
+      {% if edition.lead_html %}<div class="lead">{{ edition.lead_html|replace('@root/', root) }}</div>{% endif %}
+      <a class="go cap" href="{{ ed }}editorial/">Read the editorial →</a>
+      <nav class="ednav" aria-label="This edition">
+        {% if edition.shortlist %}<a href="{{ ed }}shortlist/"><span>Shortlist</span><b>{{ edition.shortlist|length }}</b></a>{% endif %}
+        {% if edition.followups %}<a href="{{ ed }}editorial/#follow-ups"><span>Follow-ups</span><b>{{ edition.followups|length }}</b></a>{% endif %}
+      </nav>
+    </aside>
+  </main>
+
+  <footer class="foot cap">
+    <nav class="pn" aria-label="Other editions">
+      {% if edition.prev %}<a href="{{ root }}editions/{{ edition.prev.slug }}/">← No. {{ edition.prev.number }} · {{ edition.prev.period_label }}</a>{% endif %}
+      {% if edition.next %}<a href="{{ root }}editions/{{ edition.next.slug }}/">No. {{ edition.next.number }} · {{ edition.next.period_label }} →</a>{% endif %}
+    </nav>
+    <nav aria-label="Main">
+      <a href="{{ root }}editions/">Editions</a>
+      <a href="{{ root }}topics/">Topics</a>
+      <a href="{{ root }}method/">Method</a>
+      <a href="{{ root }}charter/">Charter</a>
+    </nav>
+  </footer>
+</div>
+{# The label for a well. A pointer gets it beside the well; a finger gets it as a bar along the bottom of the
+   window, where the bar is the link to the work. #}
+<div class="tip" id="tip" role="tooltip" hidden><span class="cap k"></span><b class="t"></b><span class="m"></span><a class="open" aria-label="Open">→</a></div>
+{% endblock %}

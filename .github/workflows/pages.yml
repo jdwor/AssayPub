@@ -1,0 +1,47 @@
+# Builds the public site and publishes it on GitHub Pages whenever main changes.
+#
+# One-time setup: in the repository's Settings > Pages, set "Source" to "GitHub Actions".
+#
+# Only the public build runs here (site/build.py with no flag), so an edition whose status is "draft" is never
+# published. The site's address is passed to the build so that the feed carries full links.
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - id: pages
+        uses: actions/configure-pages@v6
+      - name: Build the site
+        run: uv run site/build.py
+        env:
+          ASSAY_URL: ${{ steps.pages.outputs.base_url }}
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

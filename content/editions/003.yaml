@@ -1,0 +1,281 @@
+# Edition 3: September 2026. Selected works live in content/works/ and name this edition and their well.
+# `shortlist` is the rest of the plate: works considered and not selected.
+number: 3
+slug: '003'
+title: September 2026
+subject: Checking
+cover: '#ff8fc7'
+dek: Work in AI for science released in September 2026.
+period:
+- '2026-09-01'
+- '2026-09-30'
+published: '2026-11-17'
+status: pilot
+funnel:
+  candidates: 644
+note: |-
+  Anthropic released a machine-written formal proof of Fermat's Last Theorem that an outside expert compiled and confirmed ({{formalizing-fermats-last-theorem}}). Four days later OpenAI claimed a blowup result for the Navier–Stokes equations with a Lean proof of its own, and the disputes that followed were about what such a check covers ({{navier-stokes-blowup}}).
+
+  The Fermat proof establishes a statement already in Lean's library, and Kevin Buzzard, who compiled it, adds that it says nothing new about the mathematics. The Navier–Stokes code compiles too, but a later comparison found two lemmas where it differs from the 166-page paper ({{navier-stokes-lost-in-translation-why}}). In a benchmark published the same month, 68 open Erdős problems were fixed in advance and stated in Lean. One model resolved two within budget and three more at much greater cost, and the proofs are verified and not yet understood ({{frontiermath-erdos}}). Mathematicians responded within weeks, with a declaration signed by Fields medalists ({{a-severe-misalignment-of-ai-in}}) and with guidelines asking companies to disclose models, prompts and costs and to pay for the work of understanding ({{responsible-release-of-ai-generated-mathematics}}).
+
+  Outside mathematics, where no check is complete, sixteen copies of one agent searching a materials database reproduced one another's numbers, and fifteen chose the same defective entry ({{divergent-strategies-convergent-outcomes}}). Agents permitted to game their scoring got past a panel of reviewing models more often when told why they had been caught ({{reward-hacking-research-agents}}). A climate scientist argues that a black-box model can be trusted only where its predictions are checked quickly ({{headlines-and-inside-stories}}). In a Google survey, 46% of scientists who saved time with AI spent more than a quarter of the saving on checking its output ({{ai-in-science-early-insights}}), and one proposal would allocate scarce experiments among agents by market ({{agentic-economies}}).
+
+  <!-- rows C and D -->
+
+  ICML assigned papers at random to a ban on language models in reviewing or to limited use. Acceptance rates were the same, and 22.5% of surveyed reviewers under the ban said they had used one ({{icml-2026-llm-peer-review}}). An analysis of 2,507 published comparisons found AI methods worse than traditional statistics on both accuracy and cost in about a quarter of cases ({{ai-enabled-scientific-frontier}}). The month's laboratory result, a palladium-oxide catalyst, was tested by the company that made it ({{palladium-oxide-catalysts}}).
+shortlist:
+- well: A1
+  title: A Case Study on Emergent Cheating and Whistleblowing in Autonomous Research Swarms
+  url: https://arxiv.org/abs/2609.04170
+  org: Google DeepMind
+  date: '2026-09-03'
+  type: paper
+  beat: autonomous-discovery
+  note: Reports what happened when 100 autonomous Gemini-based agents were set to collaboratively prove formal mathematical
+    conjectures in Lean with a shared bulletin board, direct messages and an auto-updating knowledge library.
+  id: a-case-study-on-emergent-cheating
+- well: A3
+  title: Combining physical models with dynamically acquired experimental information for the optimization of multicomponent
+    NASICON fast ionic conductors in a self-driving laboratory
+  url: https://arxiv.org/abs/2609.29344
+  org: UC Berkeley, Lawrence Berkeley National Laboratory
+  date: '2026-09-24'
+  type: paper
+  beat: autonomous-discovery
+  note: The Berkeley A-Lab robotic laboratory is driven by a cost-function framework (CASS) that jointly scores
+    how likely a multi-element sodium solid-electrolyte composition is to form phase-pure and how well it should
+    conduct.
+  id: combining-physical-models-with-dynamically-acqui
+- well: A5
+  title: An LLM Workflow That Reproduces, Improves, and Extends Published Economics Research
+  url: https://www.nber.org/papers/w35782
+  org: Harvard University
+  date: '2026-09-28'
+  type: paper
+  beat: autonomous-discovery
+  note: Introduces an open-source workflow in which an LLM reproduces, improves and extends published economics
+    articles from their replication packages, and runs it over every available package from five top general-interest
+    journals.
+  id: an-llm-workflow-that-reproduces-improves
+- well: B3
+  title: A Severe Misalignment of AI in Mathematics
+  url: https://mathandai.org/
+  org: Math and AI
+  date: '2026-09-11'
+  type: essay
+  beat: mathematics-theory
+  note: A short declaration, published three days after OpenAI's Navier–Stokes announcement and signed by Fields
+    medalists, arguing that AI companies' use of open mathematical problems as benchmarks is damaging the discipline.
+  id: a-severe-misalignment-of-ai-in
+- well: B4
+  title: The technical debt of AI-generated mathematics
+  url: https://terrytao.wordpress.com/2026/09/15/the-technical-debt-of-ai-generated-mathematics/
+  org: Henry Cohn, on Terence Tao's blog
+  date: '2026-09-15'
+  type: essay
+  beat: mathematics-theory
+  note: Cohn argues that the value of a mathematical result lies in the understanding it transfers, and that AI
+    systems are currently much better at solving problems than at communicating solutions.
+  id: the-technical-debt-of-ai-generated
+- title: De novo design of ligand binding proteins using large language models alone
+  url: https://doi.org/10.64898/2026.09.02.748987
+  org: University of California, San Francisco
+  date: '2026-09-03'
+  type: paper
+  beat: life-sciences
+  note: Asks general language models to design metal- and small-molecule-binding proteins from stated physicochemical
+    principles and to explain their choices, and reports a 25% hit rate in the laboratory from six to twelve designs
+    per query.
+  id: de-novo-design-of-ligand-binding
+  well: C1
+- title: 'Agentic BAIM-LLM Evaluation (ABLE): Benchmarking LLM Use of Protein Design Tools'
+  url: https://arxiv.org/abs/2609.05818
+  org: ''
+  date: '2026-09-05'
+  type: benchmark
+  beat: life-sciences
+  note: Tests whether language-model agents can drive protein-design tools through structure retrieval, sequence
+    generation and design validation, finds that seven of fifteen frontier models refuse every task, and compares
+    the rest against an expert human baseline on a subset.
+  well: C2
+  id: agentic-baim-llm-evaluation-able-benchmarking
+- title: 'Artificial intelligence and biosecurity: capabilities, threat pathways, and defense-in-depth governance'
+  url: https://arxiv.org/abs/2609.16213
+  org: ''
+  date: '2026-09-14'
+  type: paper
+  beat: life-sciences
+  note: Reviews the evidence on where AI tools lower barriers along the path from information gathering to synthesis
+    and release, reports that measured uplift is concentrated in the digital steps, and proposes
+    governance that ties capability thresholds to responsibilities across the ecosystem.
+  well: C4
+  id: artificial-intelligence-and-biosecurity-capabili
+- title: Discovery of microbial intergenic features with genomic language modeling and multimodal search
+  url: https://doi.org/10.64898/2026.09.15.751765
+  org: Massachusetts Institute of Technology
+  date: '2026-09-17'
+  type: paper
+  beat: life-sciences
+  note: Trains a sparse autoencoder on a genomic language model's representations to find conserved features in
+    microbial non-coding regions without predefined motifs, and generates functional hypotheses for candidate regulatory
+    DNA and structured RNAs from their conserved associations with neighboring genes.
+  well: C5
+  id: discovery-of-microbial-intergenic-features-with
+- title: Agentic campaign control for high-throughput de novo binder design
+  url: https://doi.org/10.64898/2026.09.22.753604
+  org: Princeton University
+  date: '2026-09-23'
+  type: software
+  beat: life-sciences
+  note: Puts a language-model agent in charge of allocating a fixed compute budget across several protein generative
+    models and structure evaluators during a binder campaign, with a deterministic controller validating its actions,
+    and reports the highest throughput of structurally distinct computational hits across seven targets.
+  well: C7
+  id: agentic-campaign-control-for-high-throughput
+- title: Novel Target Combinations in Lung Squamous Cell Carcinoma proposed by the Emet AI Research Environment
+    and supported by discovery stage experimentation
+  url: https://doi.org/10.64898/2026.09.04.749404
+  org: BenchSci
+  date: '2026-09-09'
+  type: paper
+  beat: chemistry-medicine
+  note: Searches a biomedical knowledge graph with an agent that pursues each hypothesis through repeated link prediction
+    and retrieval, advances its four highest-ranked two-target combinations to dose-matrix testing in two cell lines,
+    and reports synergy for one pair and an additive, cell-line-dependent effect for another.
+  well: D1
+  id: novel-target-combinations-in-lung-squamous
+- title: 'A Turing-Style Test for In-Silico Antibodies: How Sampling Mode Makes WGAN-GP Beat VAE in the Wet Lab'
+  url: https://doi.org/10.64898/2026.09.11.750936
+  org: Moderna
+  date: '2026-09-16'
+  type: paper
+  beat: chemistry-medicine
+  note: Expresses and characterizes antibody sequences from two generative models in standard discovery assays,
+    reports 92 of 93 experimentally viable from the adversarial model against 2 of 40 from the autoencoder, and
+    attributes most of the gap to how each set was sampled.
+  well: D2
+  id: a-turing-style-test-for-in
+- title: Biological rationales from language models enable leakage-resistant forecasts of target-indication success
+  url: https://doi.org/10.64898/2026.09.24.754137
+  org: University of Texas MD Anderson Cancer Center
+  date: '2026-09-29'
+  type: paper
+  beat: chemistry-medicine
+  note: Has a language model synthesize drug-agnostic human genetic evidence for a target and disease, then fits
+    an outcome model on 6,784 historical target-indication pairs, and reports an area under the curve of 0.817 on
+    765 pairs whose outcomes postdate the training cutoff.
+  well: D3
+  id: biological-rationales-from-language-models-enabl
+- well: E2
+  title: Autonomous Quantum Transport Measurements of 2D Semiconductors by an AI Agent
+  url: https://arxiv.org/abs/2609.26661
+  org: University of Delaware
+  date: '2026-09-22'
+  type: paper
+  beat: physical-world
+  note: An AI agent planned and ran cryogenic transport measurements on molybdenum disulfide devices, operated the
+    instruments, analyzed the data and wrote the report, in campaigns of up to six days.
+  id: autonomous-quantum-transport-measurements-of-2d
+- well: F1
+  title: Does AI Assistance Enhance or Erode Expertise? Evidence from a Three-Month Field Experiment in Patent Drafting
+  url: https://www.nber.org/papers/w35720
+  org: NBER; MIT; Google
+  date: '2026-09-07'
+  type: paper
+  beat: science-of-science
+  note: A pre-registered three-month randomized trial in which 133 patent lawyers at eleven firms were given an
+    AI drafting assistant and their work was scored by blinded attorneys.
+  id: does-ai-assistance-enhance-or-erode
+- well: F2
+  title: More than half of recent astronomy papers are written with language-model assistance
+  url: https://arxiv.org/abs/2609.10664
+  org: ''
+  date: '2026-09-09'
+  type: paper
+  beat: science-of-science
+  note: Measures how much of the astronomy literature carries the vocabulary signature of language-model-assisted
+    writing, using the full text of 207,111 astro-ph papers from 2015 to mid-2026 and a hierarchical Bayesian mixture
+    model.
+  id: more-than-half-of-recent-astronomy
+- well: F4
+  title: The Economics of Recursive Self-Improvement
+  url: https://arxiv.org/abs/2609.15802
+  org: METR and coauthors
+  date: '2026-09-14'
+  type: paper
+  beat: science-of-science
+  note: Growth models of AI progress drawn as feedback loops, in which acceleration depends on the product of the
+    elasticities around each loop, with a list of measurements that AI companies could publish.
+  id: the-economics-of-recursive-self-improvement
+- well: F7
+  title: Artificial intelligences and human scientists exhibit complementary strengths in theory building
+  url: https://arxiv.org/abs/2609.32562
+  org: ''
+  date: '2026-09-26'
+  type: paper
+  beat: science-of-science
+  note: Compares 25 LLMs with 13 senior researchers and 60 doctoral scholars on formulating theories, predicting
+    novel empirical results and revising theories after new evidence, in the domain of academic discourse on gender
+    and race.
+  id: artificial-intelligences-and-human-scientists-ex
+- well: G1
+  title: Nemotron-Math-Proofs-v3-SFT and Nemotron-IMO-Bench
+  url: https://huggingface.co/datasets/nvidia/Nemotron-Math-Proofs-v3-SFT
+  org: NVIDIA
+  date: '2026-09-03'
+  type: dataset
+  beat: infrastructure
+  note: A long-form natural-language proof dataset with proof-generation, proof-refinement, verification and meta-verification
+    traces, plus a companion evaluation set of new olympiad-style problems.
+  id: nemotron-math-proofs-v3-sft-and
+- well: G3
+  title: 'OSWorld-Science: A Benchmark of Computer Use Agents for Learning and Using Scientific Software'
+  url: https://huggingface.co/datasets/SciAILab/OSWorld-Science-data
+  org: ''
+  date: '2026-09-18'
+  type: benchmark
+  beat: infrastructure
+  note: A benchmark and evaluation environment for computer-using agents operating real scientific software.
+  id: osworld-science-a-benchmark-of-computer
+- well: G4
+  title: Strategies for Deploying AI Agents in Production at Scientific User Facilities
+  url: https://arxiv.org/abs/2609.36362
+  org: Argonne National Laboratory
+  date: '2026-09-28'
+  type: paper
+  beat: infrastructure
+  note: A perspective drawn from deployments of language-model agents at the Advanced Photon Source on what running
+    agents in production at light sources and other user facilities requires.
+  id: strategies-for-deploying-ai-agents-in
+- well: H1
+  title: NSF establishes operations center for the National Artificial Intelligence Research Resource
+  url: https://www.nsf.gov/cise/updates/nsf-establishes-operations-center-national-artificial
+  org: US National Science Foundation
+  date: '2026-09-01'
+  type: institute
+  beat: institutions
+  note: NSF is standing up a permanent operations center for the National AI Research Resource, moving it from a
+    pilot to sustained national infrastructure.
+  id: nsf-establishes-operations-center-for-the
+- well: H2
+  title: Scoring Grant Applications with Large Language Models
+  url: https://arxiv.org/abs/2609.25327
+  org: University of Sheffield; The Open University
+  date: '2026-09-21'
+  type: paper
+  beat: institutions
+  note: Six open-weight language models scored 2,267 recent applications to two UK research councils, and their
+    scores were compared with those of the original reviewers and panels.
+  id: scoring-grant-applications-with-large-language
+- well: H3
+  title: 'Cognitive Sanctuaries or: Manifesto of the Department Chair'
+  url: https://terrytao.wordpress.com/2026/09/27/cognitive-sanctuaries-or-manifesto-of-the-department-chair/
+  org: Guest post on Terence Tao's blog
+  date: '2026-09-27'
+  type: essay
+  beat: institutions
+  note: An astronomy department chair argues that generative AI makes output easy to manufacture in a system that
+    already rewards it, and proposes changes to how doctoral training and faculty work are evaluated.
+  id: cognitive-sanctuaries-or-manifesto-of-the
+note_bio: |
+  In biology what outran checking was volume. Nine billion predicted variant effects were released as a petabyte, the accuracy claim one sentence naming no benchmark and the supporting collaborations reported in the company's own announcement ({{alphagenome-atlas}}). What checking exists is cheap and narrow: swapping the compound changed the predictions of an agent-chosen cell model by exactly zero, leaving it 0.0011 above a predictor that never saw the drug ({{cellaudit-input-use-claims}}). The month's enzyme-system announcement failed its own replication in all ten reruns ({{claude-art-enzyme-system}}), and twelve biology problems were written to be cheap to judge ({{millennium-problems-biology}}).

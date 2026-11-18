@@ -1,0 +1,6 @@
+---
+updated: 2026-11-17
+---
+Learned weather models went into service. A DeepMind cyclone model outperformed operational systems on track forecasts and now supplies the US National Hurricane Center ({{operational-cyclone-forecasting}}), and Germany's weather service runs a model trained on its own reanalysis ({{aicon-an-operational-global-machine-learning}}). Both start from physics-based analyses. For climate projection, a review by developers of such models explains why forecasting skill does not carry over and where their own emulators failed ({{ai-pathways-weather-to-climate}}), and an essay argues that predictions which cannot be checked in time need a chain of reasoning that can be audited ({{headlines-and-inside-stories}}).
+
+In materials, two papers report compounds that were made and measured ({{mxenes-data-driven-discovery}}, {{palladium-oxide-catalysts}}). A laboratory comparison found synthesis recipes from a language model about as successful as chemists' recipes ({{human-and-llm-collaboration-for-accelerated}}). Sixteen copies of one agent searching a materials database agreed on the best candidates and on the same defective entry ({{divergent-strategies-convergent-outcomes}}), and an agent explained new optical spectra of one quantum material with first-principles calculations ({{ai-theorist-rucl3}}).

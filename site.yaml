@@ -1,0 +1,11 @@
+# Site-wide settings. Change the name here and it changes everywhere.
+name: Assay
+tagline: A monthly review of AI for science
+description: >-
+  A monthly review of open work in AI for science: papers, reports, datasets, software and funding calls,
+  each with an independent assessment.
+url: ""              # set to the public address once deployed, e.g. https://assay.example
+editor: ""           # the signing editor's name; shown when set
+contact: ""          # an address for corrections and replies; shown when set
+drafting_model: Claude Fable 5.2
+wells_per_row: 10    # wells in each of the eight rows of the plate (12 gives the standard 96-well plate)

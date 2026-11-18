@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from "macros.html" import work_item, short_item %}
+{% block title %}{{ beat.name }} | {{ site.name }}{% endblock %}
+{% block description %}{{ beat.blurb }}{% endblock %}
+{% block where %}Topic {{ beat.row }} · {{ beat.name }}{% endblock %}
+{% block main %}
+<div class="page">
+  <aside class="side sticky">
+    <div class="tok"><span class="big">{{ beat.row }}</span></div>
+    <dl>
+      <div><dt>Selected</dt><dd>{{ selected|length }}</dd></div>
+      <div><dt>Shortlisted</dt><dd>{{ shortlisted|length }}</dd></div>
+    </dl>
+    <nav class="letters" aria-label="Topics">
+      {% for b in beats %}<a href="{{ root }}topics/{{ b.slug }}/"{% if b.slug == beat.slug %} aria-current="page"{% endif %} title="{{ b.name }}">{{ b.row }}</a>{% endfor %}
+    </nav>
+  </aside>
+
+  <article class="main">
+    <p class="cap"><a href="{{ root }}topics/">Topics</a></p>
+    <h1>{{ beat.name }}</h1>
+    <p class="stand">{{ beat.blurb }}</p>
+
+    {% if topic.body %}
+    <div class="prose">{{ topic.body }}</div>
+    {% if topic.updated %}<p class="cl-note">Last revised {{ topic.updated|date }}.</p>{% endif %}
+    {% endif %}
+
+    {% if chart %}
+    <section class="sec">
+      <h2>arXiv preprints per month</h2>
+      <figure class="chart" data-chart='{{ chart.months|tojson_compact }}' data-label="{{ beat.name }}">
+        <div class="chart-plot" data-chart-plot></div>
+        <figcaption>
+          Preprints whose abstracts match this topic's search terms. Source: {{ chart_meta.source }}, retrieved {{ chart_meta.generated }}. {{ chart_meta.note }} The open circle is the current, incomplete month.
+          <details><summary>Data table</summary><div class="chart-table-scroll"><table class="tbl"><thead><tr><th scope="col">Month</th><th scope="col" class="num">Preprints</th></tr></thead><tbody>{% for m in chart.months|reverse %}{% if m.count is not none %}<tr><th scope="row">{{ m.month }}{% if m.partial %} (part month){% endif %}</th><td class="num">{{ m.count }}</td></tr>{% endif %}{% endfor %}</tbody></table></div></details>
+          <details><summary>Search terms</summary><p>Any of: {{ chart.any|join('; ') }}.{% if chart.and %} And any of: {{ chart.and|join('; ') }}.{% endif %}</p></details>
+        </figcaption>
+      </figure>
+    </section>
+    {% endif %}
+
+    <section class="sec">
+      <h2>Selected</h2>
+      {% if selected %}
+      <ul class="wl">{% for w in selected %}{{ work_item(w, root, show_edition=true) }}{% endfor %}</ul>
+      {% else %}
+      <p class="by">{{ topic.empty_note or 'No selections yet.' }}</p>
+      {% endif %}
+    </section>
+
+    {% if shortlisted %}
+    <section class="sec">
+      <h2>Shortlisted</h2>
+      <ul class="wl small">{% for s in shortlisted %}{{ short_item(s, s.well, show_edition=s.edition.number) }}{% endfor %}</ul>
+    </section>
+    {% endif %}
+  </article>
+</div>
+{% endblock %}

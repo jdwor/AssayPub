@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% from "macros.html" import short_item %}
+{% set names = {'editorial': 'Editorial', 'shortlist': 'Shortlist'} %}
+{% block title %}{{ names[part] }}, No. {{ edition.number }} | {{ site.name }}{% endblock %}
+{% block description %}{{ edition.dek }}{% endblock %}
+{% block where %}<a href="{{ root }}editions/{{ edition.slug }}/">No. {{ edition.number }} · {{ edition.period_label }}</a> · {{ names[part] }}{% endblock %}
+{% block main %}
+{% set ed = root ~ 'editions/' ~ edition.slug ~ '/' %}
+<div class="page">
+  <aside class="side">
+    <div class="tok">
+      <a class="big" href="{{ ed }}">No. {{ edition.number }}</a>
+      <p class="cap only-narrow">{{ edition.period_label }}</p>
+    </div>
+    <dl>
+      <div><dt>Period</dt><dd>{{ edition.period_label }}</dd></div>
+      {% if edition.funnel.scanned %}<div><dt>Scanned</dt><dd>{{ '{:,}'.format(edition.funnel.scanned) }}</dd></div>{% endif %}
+      {% if edition.funnel.candidates %}<div><dt>Candidates</dt><dd>{{ '{:,}'.format(edition.funnel.candidates) }}</dd></div>{% endif %}
+      <div><dt>Selected</dt><dd>{{ edition.funnel.selected }}</dd></div>
+      <div><dt>Shortlisted</dt><dd>{{ edition.funnel.shortlisted }}</dd></div>
+      {% if edition.status_short %}<div><dt>Status</dt><dd>{{ edition.status_short }}</dd></div>{% endif %}
+    </dl>
+    <nav class="sidenav tabs cap" aria-label="This edition">
+      <a href="{{ ed }}">Contents</a>
+      <a href="{{ ed }}editorial/"{% if part == 'editorial' %} aria-current="page"{% endif %}>Editorial</a>
+      {% if edition.shortlist %}<a href="{{ ed }}shortlist/"{% if part == 'shortlist' %} aria-current="page"{% endif %}>Shortlist</a>{% endif %}
+    </nav>
+  </aside>
+
+  <article class="main">
+  {% if part == 'editorial' %}
+    <p class="cap wide-only">No. {{ edition.number }} · {% if edition.subject %}{{ edition.period_label }} · {% endif %}Editorial</p>
+    <h1>{{ edition.subject or edition.title }}</h1>
+    <div class="prose">{{ edition.note_html|replace('@root/', root) }}</div>
+    {% if edition.followups %}
+    <section class="sec" id="follow-ups" aria-labelledby="follow-ups-h">
+      <h2 id="follow-ups-h">Follow-ups</h2>
+      <ul class="wl small fu">
+        {% for f in edition.followups %}
+        <li>
+          <a class="code" href="{{ root }}works/{{ f.work.slug }}/#later" tabindex="-1" aria-hidden="true">{{ f.work.well }}</a>
+          <div>
+            <h3><a href="{{ root }}works/{{ f.work.slug }}/#later">{{ f.work.short }}</a></h3>
+            <p class="meta">No. {{ f.work.edition|int }} · {{ f.by }} · <a href="{{ f.url }}" rel="noopener">{{ f.date|date }} ↗</a></p>
+            <p class="txt">{{ f.text|replace('@root/', root) }}</p>
+            {% for c in f.changes %}<p class="meta chg"><b>{{ c.label }}</b> {{ c.old }} → {{ c.new }}</p>{% endfor %}
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+    {% if edition.sources %}
+    <section class="sec">
+      <h2>Sources scanned</h2>
+      <table class="tbl">
+        <thead><tr><th scope="col">Source</th><th scope="col" class="num">Records</th><th scope="col" class="num">Relevant</th></tr></thead>
+        <tbody>
+        {% for s in edition.sources|sort(attribute='scanned', reverse=true) %}
+          <tr><th scope="row">{{ s.name }}</th><td class="num">{{ '{:,}'.format(s.scanned) }}</td><td class="num">{{ '{:,}'.format(s.relevant) }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    {% endif %}
+
+  {% else %}
+    <p class="cap wide-only">No. {{ edition.number }} · {{ edition.period_label }}</p>
+    <h1>Shortlist</h1>
+    {% for row in edition.plate %}
+    {% set short = row.cells|selectattr('kind', 'equalto', 'shortlisted')|list %}
+    {% if short %}
+    <section class="sec">
+      <h2 class="rowhead"><b>{{ row.beat.row }}</b><a class="cap" href="{{ root }}topics/{{ row.beat.slug }}/">{{ row.beat.name }}</a></h2>
+      <ul class="wl small">
+        {% for cell in short %}{{ short_item(cell.entry, cell.well) }}{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+    {% endfor %}
+
+  {% endif %}
+  </article>
+</div>
+{% endblock %}

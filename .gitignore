@@ -1,0 +1,25 @@
+# What this repository holds: everything needed to build the site and to run an edition (content, site, editorial,
+# monitor, scripts, the drafting skills, the chart data). What it leaves out is below.
+
+# Build output. GitHub builds the public site from the sources (.github/workflows/pages.yml).
+dist/
+preview/
+
+# The monitor's raw scan output and the cache of fetched sources. Both are regenerated on the next run, and the
+# cache holds the text of other people's papers, which is not ours to redistribute.
+data/cache/
+data/candidates/
+
+# The editor's working papers: run reports and logs, the pilot's research notes and one-off scripts, earlier
+# designs and mockups, and session notes. They stay on the editor's machine.
+data/runs/
+data/pilot/
+archive/
+mockups/
+HANDOFF.md
+
+# Local settings and system files
+.claude/settings.local.json
+.DS_Store
+__pycache__/
+*.pyc

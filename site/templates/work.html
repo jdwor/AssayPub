@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block title %}{{ work.title }} | {{ site.name }} {{ work.address }}{% endblock %}
+{% block description %}{{ work.standfirst|striptags }}{% endblock %}
+{% block head %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org", "@type": "Review",
+  "name": "Assessment: " ~ work.title, "identifier": "assay:" ~ work.edition ~ ":" ~ work.well,
+  "reviewBody": work.standfirst, "datePublished": edition.published|string,
+  "publisher": {"@type": "Organization", "name": site.name},
+  "itemReviewed": {"@type": "CreativeWork", "name": work.title, "url": work.url, "datePublished": work.date|string,
+                   "author": work.authors, "license": work.license or ""}
+}|tojson_compact }}</script>
+{% endblock %}
+{% block where %}<a href="{{ root }}editions/{{ edition.slug }}/">No. {{ edition.number }} · {{ edition.period_label }}</a> · {{ work.well }} · <a href="{{ root }}topics/{{ work.beat }}/">{{ work.beat_obj.name }}</a>{% endblock %}
+{% block main %}
+{% set total = work.author_count or work.authors|length %}
+<div class="page">
+  <aside class="side" aria-label="Assessment summary">
+    <div class="tok">
+      <a class="big" href="{{ root }}editions/{{ edition.slug }}/" aria-label="{{ work.well }}, back to the cover of No. {{ edition.number }}">{{ work.well }}</a>
+      <p class="cap only-narrow">{{ work.importance }}<br>Evidence: {{ work.evidence|lower }}</p>
+    </div>
+    <dl class="facts">
+      {# A rating changed by a follow-up shows the rating first published beneath it. #}
+      {% macro was(field) %}{% set f = (work.first_rated or {})[field] %}{% if f %}<a class="was" href="#later">{{ f.value }} until No. {{ f.until.number }}</a>{% endif %}{% endmacro %}
+      <div><dt>Importance</dt><dd>{{ work.importance }}{{ was('importance') }}</dd></div>
+      {# Under the evidence rating: a note when the evidence is the developer's own report, or has been through
+         peer review. A work read only in part says so; one read in full says nothing. What was checked and the
+         original's license stay in the data file (api/works.json). #}
+      <div><dt>Evidence</dt><dd>{{ work.evidence }}{% if work.independence in ('Self-reported by developer', 'Peer-reviewed') %}<span class="sub">{{ work.independence }}</span>{% endif %}{{ was('evidence') }}{{ was('independence') }}</dd></div>
+      <div><dt>Contribution</dt><dd>{{ work.novelty }}</dd></div>
+      <div><dt>Evidence type</dt><dd>{{ work.evidence_type }}</dd></div>
+      {% if work.read != 'full' %}<div><dt>Read</dt><dd>In part. {{ work.read_gap }}</dd></div>{% endif %}
+      <div><dt>Review</dt><dd>{{ work.review_label }}</dd></div>
+      <div><dt>Cite as</dt><dd>{{ site.name }} {{ work.address }}</dd></div>
+    </dl>
+    <nav class="sidenav cap"><a href="{{ root }}method/#rating-terms">Definitions</a></nav>
+  </aside>
+
+  <article class="main">
+    <p class="cap">{{ work.type_label }} · {{ work.date|date }}</p>
+    <h1>{{ work.title }}</h1>
+    <p class="by">{{ work.authors[:8]|join(', ') }}{% if total > 8 %} and {{ total - 8 }} others{% endif %}{% if work.org and work.org not in work.authors %} · {{ work.org }}{% endif %}</p>
+    <p class="stand">{{ work.standfirst|mdi }}</p>
+    <p class="links cap"><a class="orig" href="{{ work.url }}" rel="noopener">Read the original ↗</a>{% if work.followups %}<a href="#later">Later developments ({{ work.followups|length }}) ↓</a>{% endif %}</p>
+
+    <div class="prose">{{ work.body }}</div>
+    {% if work.coi %}<p class="coi"><b>Conflicts.</b> {{ work.coi|mdi }}</p>{% endif %}
+
+    {% if work.claims %}
+    <section class="sec claims" aria-labelledby="claims-h">
+      <h2 id="claims-h">Main claims</h2>
+      <ol>
+      {% for c in work.claims %}
+        <li><p>{{ c.claim|mdi }}</p><p class="cl-note"><b class="st st-{{ c.status }}">{{ CLAIM_STATUS[c.status] }}</b>{% if c.note %} {{ c.note|mdi }}{% endif %}</p></li>
+      {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+
+    {% if work.concerns %}
+    <section class="sec concerns" aria-labelledby="concerns-h">
+      <h2 id="concerns-h">Concerns</h2>
+      {% for c in work.concerns %}
+      <div class="concern">
+        <h3>{{ c.title }}</h3>
+        {{ c.body|md }}
+        {% if c.confidence %}<p class="conf"><b>Confidence.</b> {{ c.confidence }}</p>{% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if work.followups %}
+    <section class="sec" id="later" aria-labelledby="later-h">
+      <h2 id="later-h">Later developments</h2>
+      <ul class="rl fu">
+        {% for f in work.followups %}
+        <li>
+          <a href="{{ f.url }}" rel="noopener">{{ f.by }} ↗</a>
+          <span class="cl-note">{{ f.date|date }} · reported in <a href="{{ root }}editions/{{ f.edition.slug }}/editorial/#follow-ups">No. {{ f.edition.number }}, {{ f.edition.period_label }}</a></span>
+          <p class="txt">{{ f.text|replace('@root/', root) }}</p>
+          {% for c in f.changes %}<span class="cl-note chg"><b>{{ c.label }}</b> {{ c.old }} → {{ c.new }}</span>{% endfor %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% for kind, heading in LINK_KINDS.items() %}
+    {% if work.links_by[kind] %}
+    <section class="sec" aria-labelledby="links-{{ kind }}">
+      <h2 id="links-{{ kind }}">{{ heading }}</h2>
+      <ul class="rl">
+        {% for l in work.links_by[kind] %}
+        <li><a href="{{ l.url }}" rel="noopener">{{ l.label }} ↗</a>{% if l.date %}<span class="cl-note">{{ l.date|date }}</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+    {% endfor %}
+
+    {% if work.abstract %}
+    <section class="sec abstract" aria-labelledby="abstract-h">
+      <h2 id="abstract-h">Abstract</h2>
+      <p>{{ work.abstract }}</p>
+      <p class="cl-note">{{ work.abstract_note or 'From the public metadata record.' }}</p>
+    </section>
+    {% endif %}
+
+    <nav class="pager" aria-label="More from this edition">
+      {% if prev %}<a href="{{ root }}works/{{ prev.slug }}/"><span class="cap">← {{ prev.well }}</span><span class="t">{{ prev.short }}</span></a>{% else %}<span></span>{% endif %}
+      {% if next %}<a href="{{ root }}works/{{ next.slug }}/"><span class="cap">{{ next.well }} →</span><span class="t">{{ next.short }}</span></a>{% endif %}
+    </nav>
+  </article>
+</div>
+{% endblock %}

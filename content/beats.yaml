@@ -1,0 +1,42 @@
+# The eight topics. Each is one row of the plate and one topic page.
+# `row` fixes the row on the cover and the first letter of each well address.
+- row: A
+  slug: autonomous-discovery
+  name: Autonomous discovery
+  short: Autonomy
+  blurb: Research agents, AI scientists and self-driving laboratories.
+- row: B
+  slug: mathematics-theory
+  name: Mathematics & theory
+  short: Mathematics
+  blurb: Proofs, formalization, and AI in theoretical physics and computer science.
+- row: C
+  slug: life-sciences
+  name: Life sciences
+  short: Life
+  blurb: Proteins, genomics, cells and other biology.
+- row: D
+  slug: chemistry-medicine
+  name: Chemistry & medicine
+  short: Medicine
+  blurb: Chemistry, drug development and clinical research.
+- row: E
+  slug: physical-world
+  name: Physical world
+  short: Physical
+  blurb: Materials, physics, energy, climate and astronomy.
+- row: F
+  slug: science-of-science
+  name: Science of science
+  short: Metascience
+  blurb: Studies of how AI affects research practice, productivity and publishing.
+- row: G
+  slug: infrastructure
+  name: Infrastructure
+  short: Tools
+  blurb: Datasets, benchmarks, models and software.
+- row: H
+  slug: institutions
+  name: Institutions
+  short: Institutions
+  blurb: Funding, policy, new organizations, and essays on how science is organized.

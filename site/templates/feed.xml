@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.name }}</title>
+  <subtitle>{{ site.tagline }}</subtitle>
+  <id>{{ site.url or 'urn:assay' }}/</id>
+  <link href="{{ site.url }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/"/>
+  <updated>{{ build_date }}T00:00:00Z</updated>
+  {% for w in works %}
+  <entry>
+    <title>{{ w.title }}</title>
+    <id>{{ site.url or 'urn:assay' }}/works/{{ w.slug }}/</id>
+    <link href="{{ site.url }}/works/{{ w.slug }}/"/>
+    <link rel="related" href="{{ w.url }}"/>
+    <updated>{{ w.date|date('iso') if w.date|string|length > 7 else w.date ~ '-01' }}T00:00:00Z</updated>
+    <category term="{{ w.beat }}"/>
+    <summary>{{ w.standfirst|striptags }} Importance: {{ w.importance }}. Evidence: {{ w.evidence }}. ({{ site.name }} {{ w.address }})</summary>
+  </entry>
+  {% endfor %}
+</feed>

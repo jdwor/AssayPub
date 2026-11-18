@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>org.assay.monthly</string>
+  <key>ProgramArguments</key>
+  <array><string>/bin/zsh</string><string>__ROOT__/scripts/monthly.sh</string></array>
+  <key>WorkingDirectory</key><string>__ROOT__</string>
+  <!-- Checked at login and every morning at 06:00. launchd runs a missed check when the Mac wakes.
+       The script itself decides whether a month is due, so extra checks cost nothing. -->
+  <key>RunAtLoad</key><true/>
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>6</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StandardOutPath</key><string>__ROOT__/data/runs/launchd.log</string>
+  <key>StandardErrorPath</key><string>__ROOT__/data/runs/launchd.log</string>
+</dict>
+</plist>

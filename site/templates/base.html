@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ site.name }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+<meta name="theme-color" content="{{ cover }}">
+<link rel="preload" href="{{ root }}static/fonts/besley-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}static/fonts/archivo-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ root }}static/fonts/fonts.css">
+<link rel="stylesheet" href="{{ root }}static/css/assay.css">
+<link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="{{ root }}feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='{{ cover|replace('#', '%23') }}'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%230b0b0c'/%3E%3C/svg%3E">
+{% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}" style="--cover: {{ cover }}; --cols: {{ site.wells_per_row or 12 }}">
+<a class="skip" href="#main">Skip to content</a>
+{% block page %}
+<header class="strip">
+  <a class="name" href="{{ root }}">{{ site.name }}</a>
+  <span class="cap where">{% block where %}{% endblock %}</span>
+  <nav class="cap" aria-label="Main">
+    <a href="{{ root }}editions/"{% if section == 'editions' and work is not defined and part is not defined %} aria-current="page"{% endif %}>Editions</a>
+    <a href="{{ root }}topics/"{% if section == 'topics' %} aria-current="page"{% endif %}>Topics</a>
+    <a href="{{ root }}method/"{% if section == 'method' %} aria-current="page"{% endif %}>Method</a>
+    <a href="{{ root }}charter/"{% if section == 'charter' %} aria-current="page"{% endif %}>Charter</a>
+  </nav>
+</header>
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+<footer class="colophon">
+  <nav class="cap" aria-label="Data and corrections">
+    <a href="{{ root }}corrections/">Corrections</a>
+    <a href="{{ root }}api/works.json">works.json</a>
+    <a href="{{ root }}api/editions.json">editions.json</a>
+    <a href="{{ root }}feed.xml">Feed</a>
+    <a href="{{ root }}llms.txt">llms.txt</a>
+  </nav>
+</footer>
+{% endblock %}
+<script src="{{ root }}static/js/assay.js" defer></script>
+</body>
+</html>

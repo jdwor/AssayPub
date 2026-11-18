@@ -1,0 +1,181 @@
+# What the monitor scans. Edit this file to change coverage; no code changes needed.
+# Every source listed here was live-tested on 2026-11-16.
+
+# ---------------------------------------------------------------- arXiv
+# One "lens" per beat. A lens matches when the abstract contains any `any`
+# phrase and, if `and` is given, also any `and` phrase.
+arxiv:
+  lenses:
+    general:
+      any: ["AI for science", "AI4Science", "AI-driven scientific discovery", "AI for scientific discovery",
+            "accelerate scientific discovery", "accelerating scientific discovery", "scientific foundation model"]
+    autonomous-discovery:
+      any: ["AI scientist", "AI scientists", "AI co-scientist", "autonomous scientific discovery",
+            "automated scientific discovery", "autonomous research", "automated research", "research agent",
+            "research agents", "self-driving lab", "self-driving laboratory", "self-driving laboratories",
+            "autonomous laboratory", "autonomous laboratories", "hypothesis generation", "scientific agents",
+            "agentic science", "autonomous discovery", "closed-loop discovery", "open-ended AI research",
+            "scientific research problems", "AI research agents", "automating science", "follow-up paper"]
+    mathematics-theory:
+      any: ["theorem proving", "autoformalization", "Lean 4", "mathematical discovery", "open problems",
+            "mathematical reasoning", "formal proofs"]
+      and: ["language model", "language models", "LLM", "LLMs", "AI system", "AI systems",
+            "artificial intelligence", "neural"]
+    life-sciences:
+      any: ["protein design", "protein language model", "virtual cell", "genomic language model",
+            "single-cell foundation model", "DNA language model", "biological foundation model",
+            "perturbation prediction"]
+    chemistry-medicine:
+      any: ["drug discovery", "retrosynthesis", "molecular design", "reaction prediction",
+            "drug development", "medicinal chemistry"]
+      and: ["language model", "language models", "LLM", "foundation model", "generative model", "agent", "agents"]
+    physical-world:
+      any: ["materials discovery", "interatomic potential", "weather forecasting", "climate emulator",
+            "inverse design", "tokamak", "crystal structure prediction", "catalyst design"]
+      and: ["foundation model", "machine learning", "deep learning", "language model", "generative model"]
+    science-of-science:
+      any: ["scientific productivity", "research productivity", "peer review", "scientific writing",
+            "scientific publishing", "science of science", "scientific workforce", "scientific papers",
+            "arXiv submissions", "preprint", "scientific frontier", "scientific analysis", "AI in science"]
+      and: ["generative AI", "large language model", "large language models", "LLM", "LLMs", "ChatGPT",
+            "agentic AI", "artificial intelligence"]
+    infrastructure:
+      any: ["benchmark", "dataset", "open-source"]
+      and: ["scientific discovery", "AI for science", "scientific reasoning", "scientific literature", "AI4Science"]
+    institutions:
+      any: ["science policy", "research funding", "science funding", "innovation policy"]
+      and: ["artificial intelligence", "language models", "generative AI"]
+
+# ---------------------------------------------------------------- bioRxiv / medRxiv
+# Fetched in full for the window, then filtered on these phrases (title + abstract).
+biorxiv:
+  servers: [biorxiv, medrxiv]
+  keywords: ["large language model", "language model", "foundation model", "AI agent", "AI scientist",
+             "generative AI", "agentic", "deep learning", "machine learning", "artificial intelligence"]
+
+# ---------------------------------------------------------------- NBER
+nber:
+  keywords: ["artificial intelligence", "generative AI", "large language model", "machine learning",
+             " AI ", "scientist", "innovation", "research productivity", "R&D", "invention"]
+  require_ai: true     # must also contain an AI term
+
+# ---------------------------------------------------------------- feeds
+# kind: rss (RSS or Atom) or sitemap (for sites with no feed; `include` is a URL regex).
+# filter: all (every post is a candidate) or relevant (must pass the relevance filter).
+feeds:
+  labs:
+    - {name: Anthropic, url: "https://www.anthropic.com/sitemap.xml", kind: sitemap, include: "/(research|news)/[a-z0-9-]+$", filter: relevant}
+    - {name: OpenAI, url: "https://openai.com/news/rss.xml", kind: rss, filter: relevant}
+    - {name: Google DeepMind, url: "https://deepmind.google/blog/rss.xml", kind: rss, filter: relevant}
+    - {name: Google Research, url: "https://research.google/blog/rss/", kind: rss, filter: relevant}
+    - {name: Microsoft Research, url: "https://www.microsoft.com/en-us/research/feed/", kind: rss, filter: relevant}
+    - {name: NVIDIA, url: "https://blogs.nvidia.com/feed/", kind: rss, filter: relevant}
+    - {name: Hugging Face, url: "https://huggingface.co/blog/feed.xml", kind: rss, filter: relevant}
+    - {name: Sakana AI, url: "https://sakana.ai/feed.xml", kind: rss, filter: relevant}
+    - {name: Allen Institute for AI, url: "https://allenai.org/rss.xml", kind: rss, filter: relevant}
+    - {name: Nature, url: "https://www.nature.com/nature.rss", kind: rss, filter: relevant, type: paper}
+    - {name: openai/math repository, url: "https://github.com/openai/math/commits/main.atom", kind: rss, filter: all, type: dataset}
+    - {name: arXiv blog, url: "https://blog.arxiv.org/feed/", kind: rss, filter: relevant, type: initiative}
+  newsletters:
+    - {name: Import AI, url: "https://importai.substack.com/feed", kind: rss, filter: relevant}
+    - {name: Owl Posting, url: "https://www.owlposting.com/feed", kind: rss, filter: all}
+    - {name: Century of Bio, url: "https://centuryofbio.com/feed", kind: rss, filter: all}
+    - {name: Asimov Press, url: "https://www.asimov.press/feed", kind: rss, filter: relevant}
+    - {name: Works in Progress, url: "https://www.worksinprogress.news/feed", kind: rss, filter: relevant}
+    - {name: In the Pipeline, url: "https://www.science.org/blogs/pipeline/feed", kind: rss, filter: relevant}
+    - {name: Asterisk, url: "https://asteriskmag.com/feed", kind: rss, filter: relevant}
+    - {name: Macroscience, url: "https://www.macroscience.org/feed", kind: rss, filter: relevant}
+    - {name: AI as Normal Technology, url: "https://www.normaltech.ai/feed", kind: rss, filter: relevant}
+    - {name: Understanding AI, url: "https://www.understandingai.org/feed", kind: rss, filter: relevant}
+    - {name: Epoch AI, url: "https://epochai.substack.com/feed", kind: rss, filter: relevant}
+    - {name: Institute for Progress, url: "https://ifp.org/feed/", kind: rss, filter: relevant}
+    - {name: Good Science Project, url: "https://goodscience.substack.com/feed", kind: rss, filter: relevant}
+    - {name: Terence Tao, url: "https://terrytao.wordpress.com/feed/", kind: rss, filter: relevant}
+    - {name: Quanta Magazine, url: "https://www.quantamagazine.org/feed/", kind: rss, filter: relevant}
+    - {name: Dwarkesh Patel, url: "https://www.dwarkesh.com/feed", kind: rss, filter: relevant}
+    - {name: Marginal Revolution, url: "https://marginalrevolution.com/feed", kind: rss, filter: relevant}
+    - {name: Decoding Bio, url: "https://decodingbio.substack.com/feed", kind: rss, filter: relevant}
+    - {name: Retraction Watch, url: "https://retractionwatch.com/feed/", kind: rss, filter: relevant}
+    - {name: Roots of Progress, url: "https://newsletter.rootsofprogress.org/feed", kind: rss, filter: relevant}
+    - {name: Nature (machine learning), url: "https://www.nature.com/subjects/machine-learning.rss", kind: rss, filter: relevant}
+    # Added after the pilot: each of these published a selected or shortlisted work the monitor missed.
+    - {name: Timothy Gowers, url: "https://gowers.wordpress.com/feed/", kind: rss, filter: relevant}
+    - {name: Xena (Kevin Buzzard), url: "https://xenaproject.wordpress.com/feed/", kind: rss, filter: relevant}
+    - {name: AI Policy Perspectives, url: "https://www.aipolicyperspectives.com/feed", kind: rss, filter: relevant}
+    - {name: Ruxandra Teslo, url: "https://www.writingruxandrabio.com/feed", kind: rss, filter: relevant}
+    - {name: Scott Aaronson, url: "https://scottaaronson.blog/?feed=rss2", kind: rss, filter: relevant}
+    - {name: Noahpinion, url: "https://www.noahpinion.blog/feed", kind: rss, filter: relevant}
+    - {name: Ran Blekhman, url: "https://blekhman.substack.com/feed", kind: rss, filter: relevant}
+    - {name: Science news, url: "https://www.science.org/rss/news_current.xml", kind: rss, filter: relevant}
+  funders:
+    - {name: NSF funding, url: "https://www.nsf.gov/rss/rss_www_funding_pgm_annc_inf.xml", kind: rss, filter: relevant, type: rfp}
+    - {name: UKRI opportunities, url: "https://www.ukri.org/opportunity/feed/", kind: rss, filter: relevant, type: rfp}
+    - {name: Astera Institute, url: "https://astera.org/feed/", kind: rss, filter: relevant, type: initiative}
+    - {name: Schmidt Sciences, url: "https://www.schmidtsciences.org/feed/", kind: rss, filter: relevant, type: initiative}
+    - {name: Simons Foundation, url: "https://www.simonsfoundation.org/feed/", kind: rss, filter: relevant, type: rfp}
+    - {name: US Department of Energy, url: "https://www.energy.gov/rss.xml", kind: rss, filter: relevant, type: initiative}
+
+# Sources with no feed or API. The weekly editorial run covers these by web search.
+web_search_only:
+  - X / Twitter (no open API)
+  - FutureHouse, Arc Institute, EvolutionaryScale, Isomorphic Labs, Meta FAIR, Periodic Labs, Lila Sciences
+  - ARIA, Renaissance Philanthropy, Sloan Foundation, Wellcome, DOE Office of Science
+  - SSRN, OECD, Royal Society, National Academies
+  - The White House, OpenAI research PDFs, Clay Mathematics Institute
+
+# ---------------------------------------------------------------- social signals
+# Posts are not candidates themselves. The links they carry are, and the
+# engagement is attached to any candidate with the same link.
+social:
+  bluesky:
+    queries: ["AI for science", "AI scientist", "AI co-scientist", "self-driving lab", "scientific discovery AI",
+              "arxiv AI science", "LLM researchers science", "protein design model", "AI mathematics proof"]
+    min_likes: 25
+  hackernews:
+    queries: ["AI scientist", "scientific discovery", "AI for science", "AlphaFold", "AlphaEvolve", "self-driving lab",
+              "theorem proving", "protein design", "materials discovery", "drug discovery AI", "research agent", "arxiv AI science"]
+    min_points: 40
+
+# ---------------------------------------------------------------- datasets, models, software
+resources:
+  huggingface:
+    tags: [chemistry, biology, medical, climate, physics, science, materials, "materials-science", astronomy, mathematics]
+    min_likes: 10
+  github:
+    queries: ["AI scientist", "scientific discovery agent", "topic:ai-for-science", "topic:ai4science",
+              "self-driving lab", "research agent science", "materials discovery", "topic:scientific-machine-learning",
+              "theorem proving LLM", "lab automation LLM"]
+    min_stars: 50
+
+# ---------------------------------------------------------------- US federal funding
+grants_gov:
+  keywords: ["artificial intelligence science", "AI for science", "machine learning scientific discovery",
+             "autonomous laboratory", "foundation model science"]
+
+# ---------------------------------------------------------------- relevance filter
+# A cheap first pass; the editorial triage does the real judging.
+relevance:
+  strong:      # unmistakably on-topic phrases, 3 points each (max 9)
+    ["AI for science", "AI4Science", "AI scientist", "co-scientist", "scientific discovery", "self-driving lab",
+     "autonomous lab", "research agent", "hypothesis generation", "automated research", "AI in science",
+     "science of science", "theorem proving", "autoformalization", "protein design", "drug discovery",
+     "materials discovery", "virtual cell", "foundation model for", "weather forecasting", "peer review",
+     "scientific productivity", "research productivity", "metascience", "scientific research", "scientists use"]
+  ai_terms:
+    ["artificial intelligence", " AI ", "AI-", "machine learning", "deep learning", "language model", "LLM",
+     "foundation model", "neural network", "generative", "agentic", "Claude", "GPT", "Gemini", "AlphaFold",
+     "AlphaEvolve", "AlphaProof"]
+  science_terms:
+    ["science", "scientific", "scientist", "research", "researcher", "discovery", "laboratory", "experiment",
+     "biology", "chemistry", "physics", "mathematics", "materials", "genomic", "protein", "clinical", "climate",
+     "astronomy", "preprint", "peer review", "hypothesis", "R&D", "innovation"]
+  threshold: 3
+
+# ---------------------------------------------------------------- life-sciences screen
+# Candidates matching any of these terms go to the life-sciences reading list
+# (candidates.bio.jsonl), whichever source or topic they came from.
+bio_screen:
+  ["protein", "antibod", "genom", "enzyme", "crispr", "pathogen", "virus", "viral", "bacteri", "vaccine",
+   "clinical", "patient", "tumor", "tumour", "cancer", "drug", "pharma", "therapeutic", "toxic", "biolog",
+   "biomedic", "biochem", "biomolec", "cell line", "single-cell", " rna", "mrna", " dna", "peptide", "ligand",
+   "medicin", "disease", "neuro", "microb", "immun"]

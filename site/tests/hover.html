@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>Cover hover check</title>
+<!-- Loads a page of the built site in a frame of a given size, moves a pointer onto every well, label and
+     cover link, and reports whether anything changed size or position, whether the page is wider than its
+     window, and whether the tooltip left the window. Run through scripts/check_cover.sh. -->
+<body style="margin:0"><pre id="out" style="margin:0;height:40px;overflow:hidden">pending</pre>
+<script>
+const q = new URLSearchParams(location.search);
+const W = +q.get("w") || 1280, H = +q.get("h") || 800, P = q.get("p") || "index.html";
+const f = document.createElement("iframe");
+f.style.cssText = `width:${W}px;height:${H}px;border:0;display:block`;
+f.src = P; document.body.appendChild(f);
+f.onload = () => setTimeout(() => {
+  const d = f.contentDocument, w = f.contentWindow;
+  d.getAnimations().forEach((a) => a.finish());
+  const rect = (s) => { const e = d.querySelector(s); if (!e || !e.getClientRects().length) return null;   // no box of its own (the panel on a phone)
+    const b = e.getBoundingClientRect(); return [b.left + w.scrollX, b.top + w.scrollY, b.width, b.height].map(Math.round).join(","); };
+  const metrics = () => JSON.stringify({ sw: d.documentElement.scrollWidth, iw: w.innerWidth, sh: d.documentElement.scrollHeight,
+    no: rect(".mast .no"), foot: rect(".foot"), panel: rect(".panel"), matrix: rect(".matrix"), item: rect(".item"), last: rect(".r:last-child") });
+  const base = metrics(); let moved = 0, tipbad = 0, n = 0, worst = null;
+  for (const e of d.querySelectorAll("a.d, .item, .ednav a, .go, .foot a")) {
+    if (!e.getClientRects().length) continue;   // the phone's plate on a wide screen, the rows' wells on a phone
+    n++;
+    e.scrollIntoView({ block: "center" });
+    e.dispatchEvent(new w.PointerEvent("pointerenter", { pointerType: "mouse" }));
+    const now = metrics(); if (now !== base) { moved++; worst = worst || [e.className, now]; }
+    const t = d.getElementById("tip");
+    if (t && !t.hidden) { const b = t.getBoundingClientRect(); if (b.left < 0 || b.top < 0 || b.right > w.innerWidth || b.bottom > w.innerHeight) tipbad++; }
+    e.dispatchEvent(new w.PointerEvent("pointerleave", { pointerType: "mouse" }));
+  }
+  const b = JSON.parse(base);
+  document.getElementById("out").textContent = "RESULT " + JSON.stringify({ w: W, p: P, targets: n, overflow: b.sw > b.iw, moved, tipbad, height: b.sh, worst });
+}, 500);
+</script></body>

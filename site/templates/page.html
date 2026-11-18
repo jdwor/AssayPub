@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} | {{ site.name }}{% endblock %}
+{% block description %}{{ page.dek or site.description }}{% endblock %}
+{% block where %}{{ page.title }}{% endblock %}
+{% block main %}
+<div class="page">
+  <aside class="side sticky">
+    <nav class="sidenav tabs cap" aria-label="About">
+      <a href="{{ root }}charter/"{% if section == 'charter' %} aria-current="page"{% endif %}>Charter</a>
+      <a href="{{ root }}method/"{% if section == 'method' %} aria-current="page"{% endif %}>Method</a>
+      <a href="{{ root }}corrections/"{% if section == 'corrections' %} aria-current="page"{% endif %}>Corrections</a>
+    </nav>
+  </aside>
+  <article class="main">
+    {% if page.kicker %}<p class="cap">{{ page.kicker }}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.dek %}<p class="stand">{{ page.dek }}</p>{% endif %}
+    <div class="prose">{{ page.body }}</div>
+  </article>
+</div>
+{% endblock %}

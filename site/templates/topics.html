@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Topics | {{ site.name }}{% endblock %}
+{% block where %}Topics{% endblock %}
+{% block main %}
+<div class="page wide">
+  <article class="main">
+    <h1>Topics</h1>
+    <ul class="trows">
+      {% for t in topics %}
+      <li>
+        <a class="trow" href="{{ root }}topics/{{ t.beat.slug }}/">
+          <b aria-hidden="true">{{ t.beat.row }}</b>
+          <span><span class="nm">{{ t.beat.name }}</span><span class="bl">{{ t.beat.blurb }}</span></span>
+          <span class="cap">{{ t.selected|length }} selected · {{ t.shortlisted|length }} shortlisted</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </article>
+</div>
+{% endblock %}

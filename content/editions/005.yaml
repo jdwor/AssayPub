@@ -1,0 +1,88 @@
+# Edition 5: November 2026. Selected works live in content/works/ and name this edition and their well.
+# `shortlist` is the rest of the plate: works considered and not selected.
+number: 5
+slug: '005'
+title: November 2026
+cover: '#5cc8ff'
+dek: Work in AI for science released from November 1 to 16, 2026.
+period:
+- '2026-11-01'
+- '2026-11-16'
+published: '2026-11-17'
+status: draft
+funnel:
+  candidates: 311
+note: |-
+  Both selections from the first half of November measure AI with AI. Anthropic's study of how researchers use Claude relies on language models to label 207,049 sessions and to score which research tasks AI can do ({{how-researchers-use-claude}}). A benchmark of AI peer reviewers plants 357 errors in 30 preprints and uses a panel of language models to decide which of them each reviewer caught ({{auditing-ai-peer-reviewers}}).
+
+  Neither had much ground truth to check its instruments against. Anthropic tested its session classifier on transcripts written by a model, and its appendix says that "When no ground truth is available, validation of any classifier is inherently difficult." The benchmark's authors checked their panel against one person's judgments on a single paper, where the two agreed on 127 of 132.
+
+  <!-- rows C and D -->
+
+  Anthropic finds, as Google's study did in September ({{ai-in-science-early-insights}}), that data analysis is the largest use of AI in research. It also finds that gathering data and generating hypotheses get less use than their share of researchers' time. The reviewer benchmark found that, given the same prompt, three frontier models differed by about 50 percentage points in the errors they detected.
+shortlist:
+- title: Biomolecular design through latent reasoning with RFD4-Proteina
+  url: https://doi.org/10.64898/2026.11.12.766037
+  org: Institute for Protein Design, University of Washington, with NVIDIA
+  date: '2026-11-15'
+  type: model
+  beat: life-sciences
+  note: A design model over a shared latent space covering standard and modified amino acids, sugars, DNA and RNA,
+    which the authors report beats all previous methods on in silico protein design benchmarks; the weights are
+    on Hugging Face as nvidia/RFD4-Proteina.
+  well: C1
+  id: biomolecular-design-through-latent-reasoning-wit
+- title: Agentic cheminformatics with Google Antigravity
+  url: https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/
+  org: Google DeepMind
+  date: '2026-11-03'
+  type: software
+  beat: chemistry-medicine
+  note: A set of cheminformatics skills for Google's agentic development environment, demonstrated on a lung cancer
+    series by having an agent search compounds, run matched molecular pair analysis and propose macrocycles with
+    synthetic routes in about an hour.
+  well: D1
+  id: agentic-cheminformatics-with-google-antigravity
+- title: 'Anthropic bought a one-person, AI-powered biotech: is this drug discovery''s future?'
+  url: https://www.nature.com/articles/d41586-026-03640-9
+  org: Heidi Ledford, Nature
+  date: '2026-11-11'
+  type: essay
+  beat: chemistry-medicine
+  note: Reports how many people were actually involved in the drug programs of the single-employee company Anthropic
+    acquired, including part-time consultants and at least five contract research organizations, and asks whether
+    the minimal biotech is a durable model.
+  well: D2
+  id: anthropic-bought-a-one-person-ai
+- title: Stop It. Just Stop It.
+  url: https://www.science.org/content/blog-post/stop-it-just-stop-it
+  org: Derek Lowe, In the Pipeline
+  date: '2026-11-13'
+  type: essay
+  beat: chemistry-medicine
+  note: Collects two decades of predictions that major diseases would be cured within a decade, most recently from
+    Dario Amodei, and argues that the pattern damages the credibility of the work it is meant to promote.
+  well: D3
+  id: stop-it-just-stop-it
+note_bio: 'The same circularity appears in chemistry and the life sciences. A design model over a shared latent
+  space of amino acids, sugars and nucleic acids is reported to beat prior methods on in silico benchmarks ({{biomolecular-design-through-latent-reasoning-wit}}),
+  and an agentic cheminformatics demonstration ends at proposed macrocycles and synthetic routes ({{agentic-cheminformatics-with-google-antigravity}}).
+  The month''s ground truth came from reporting: the consultants and at least five contract research organizations
+  behind a one-person biotech''s programs ({{anthropic-bought-a-one-person-ai}}), and two decades of cure forecasts
+  ({{stop-it-just-stop-it}}).'
+subject: Ground truth
+followups:
+- work: openai-math-release
+  date: '2026-11-12'
+  by: Kevin Buzzard
+  url: https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/
+  text: Buzzard examined the Lean code that accompanies 290 of the manuscripts. For about 38 of them the code does
+    not state the paper's main theorem. In the example given, a manuscript that claims Lech's multiplicity conjecture,
+    the Lean code proves one of the paper's corollaries.
+- work: navier-stokes-blowup
+  date: '2026-11-12'
+  by: Kevin Buzzard
+  url: https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/
+  text: Buzzard reports that the 640,000 lines of Lean compile and are accepted by several independent kernels.
+    The same post agrees with the earlier critique ({{navier-stokes-lost-in-translation-why}}) that the written
+    proof and the Lean proof diverge in places.

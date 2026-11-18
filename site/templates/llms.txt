@@ -1,0 +1,25 @@
+# {{ site.name }}
+
+> {{ site.description }}
+
+{{ site.name }} does not publish original research. Each edition selects open work, assesses it in fixed terms, and gives each selection a permanent address (edition and well, for example "{{ site.name }} 0 · F7").
+
+Rating terms. Importance: Useful, Notable, Major, Landmark. Strength of evidence: Contested, Preliminary, Suggestive, Solid, Compelling, Not applicable. Independence: Self-reported by developer, Independent, Peer-reviewed. Each assessment also records what was checked, conflicts of interest, and whether an editor has reviewed it.
+
+## Data
+
+- [All assessed works](api/works.json): one record per selected work, with the full structured assessment
+- [All editions](api/editions.json): funnel counts, selections and the shortlist that was not selected
+- [Atom feed](feed.xml)
+
+## Standing pages
+
+- [Charter](charter/): purpose and policies
+- [Method](method/): sources, rating terms, criteria for concerns, licensing, conflicts
+- [Corrections](corrections/)
+
+## Selected works
+
+{% for w in works %}
+- [{{ w.title }}](works/{{ w.slug }}/): {{ w.standfirst|striptags }} Importance {{ w.importance }}; evidence {{ w.evidence }}.
+{% endfor %}

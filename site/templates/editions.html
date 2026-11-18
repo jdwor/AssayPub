@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "macros.html" import mini %}
+{% block title %}Editions | {{ site.name }}{% endblock %}
+{% block where %}{% endblock %}
+{% block main %}
+<div class="page wide">
+  <article class="main">
+    <h1>Editions</h1>
+    <ul class="eds">
+      {% for e in editions %}
+      <li>
+        <a class="ed" href="{{ root }}editions/{{ e.slug }}/" style="--cover: {{ e.cover }}">
+          <span class="thumb"><span class="no">No. {{ e.number }}</span>{{ mini(e) }}</span>
+          <span class="edtext">
+            <span class="edtitle">{{ e.title }}</span>
+            {% if e.subject %}<span class="edsub">{{ e.subject }}</span>{% endif %}
+            {% if e.status_short %}<span class="cap">{{ e.status_short }}</span>{% endif %}
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </article>
+</div>
+{% endblock %}

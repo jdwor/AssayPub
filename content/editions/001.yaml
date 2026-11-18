@@ -1,0 +1,256 @@
+# Edition 1: July 2026. Selected works live in content/works/ and name this edition and their well.
+# `shortlist` is the rest of the plate: works considered and not selected.
+number: 1
+slug: '001'
+title: July 2026
+subject: Jacobian
+cover: '#ffd60a'
+dek: Work in AI for science released in July 2026.
+period:
+- '2026-07-01'
+- '2026-07-31'
+published: '2026-11-17'
+status: pilot
+funnel:
+  candidates: 559
+note: |-
+  The Jacobian conjecture, open for about a century, is false in three dimensions. The counterexample is a single polynomial map of degree seven, found with Claude Fable and announced on July 19. By the next morning it had been formalized in Lean, and two days after the announcement Terence Tao published an account of why it works ({{a-digestion-of-the-jacobian-conjecture}}).
+
+  The map can be verified by direct calculation. Tao's construction recovers it and leaves one step for which no good geometric reason is yet known. A proof of the cycle double cover conjecture, also released in July, runs to three pages, and a graph theorist posted an independent exposition a week later ({{cycle-double-cover-proof}}). Kevin Buzzard describes checking a counterexample to a question of Grothendieck in Lean in under five minutes ({{human-mathematicians-are-being-outcounterexampled}}). Neither Tao's post nor Buzzard's says how the model was used, and the cycle double cover note gives the subject one sentence.
+
+  Essays published in July argue that experiments and institutions, more than ideas, set the pace of research outside mathematics. Two make the case for science policy and for medicine ({{conjecture-machines}}, {{intelligence-is-not-the-main-bottleneck}}), and a third applies Amdahl's law to a biomedical project, where faster literature review barely shortens work that waits on grants, approvals and animals ({{why-ai-will-not-speed-up-science}}). The month's laboratory studies are consistent with them. At Johns Hopkins, recipes written by a language model made known oxides about as often as chemists' recipes did, and the study's one new compound came from a chemist's recipe reacting with its crucible ({{human-and-llm-collaboration-for-accelerated}}). An agent ran a cryogenic microscope on one device, with researchers supplying the question ({{aims-an-ai-experimentalist-turns-uncertainty}}). At Princeton, agents given the questions behind two unpublished papers dropped their most ambitious hypotheses within ten hours, and the papers' authors rejected both results ({{open-ended-research-shadow-evaluations}}).
+
+  <!-- rows C and D -->
+
+  In the publication record, the long decline of single-author papers stopped after 2022 ({{return-of-the-solo-author-the}}). An audit flagged fabricated-looking references in accepted papers at four conferences, and its authors found that most of the flags they checked by hand were false alarms ({{phantom-references-hallucinated-citations-that-s}}).
+
+  The United States government put more than $5 billion behind AI for science ({{genesis-mission-expansion}}). The White House release gives no breakdown of the sum, and the policy report published the day before ({{science-a-new-golden-age}}) does not mention the budget cuts proposed for the same agencies, as Eos reported.
+shortlist:
+- well: A1
+  title: 'Distributed Denial of Science: How Indirect Data Poisoning of AI Systems Can Industrialize Scientific
+    Fraud'
+  url: https://arxiv.org/abs/2607.10712
+  org: Carnegie Mellon University
+  date: '2026-07-12'
+  type: paper
+  beat: autonomous-discovery
+  note: 'Proposes and tests ''indirect data poisoning'': an adversary corrupts an open dataset and uploads the variant
+    to a public repository, where autonomous research agents retrieve it and report the planted conclusion as their
+    own finding.'
+  id: distributed-denial-of-science-how-indirect
+- well: A4
+  title: 'The Implementation Lottery: Auditing Idea Reliability in Automated Research'
+  url: https://arxiv.org/abs/2607.26587
+  org: ''
+  date: '2026-07-29'
+  type: paper
+  beat: autonomous-discovery
+  note: Tests whether the score a research agent's program earns reflects the idea or the particular implementation,
+    by writing fresh programs for the same idea across 3,048 assignments on 31 tasks.
+  id: the-implementation-lottery-auditing-idea-reliabi
+- title: Structure-guided design of a CD81-binding mini-protein that blocks hepatitis C virus entry
+  url: https://doi.org/10.64898/2026.07.10.737702
+  org: Yonsei University
+  date: '2026-07-13'
+  type: paper
+  beat: life-sciences
+  note: Designs mini-proteins against the large extracellular loop of the host receptor CD81, and reports a lead
+    with 0.5 nM affinity, stability to 95 °C and neutralization of cell-culture virus at 1.2 nM.
+  well: C1
+  id: structure-guided-design-of-a-cd81
+- title: Potent substoichiometric inhibition of alpha-synuclein aggregation by de novo oligomer-binding proteins
+  url: https://doi.org/10.64898/2026.07.13.738012
+  org: University of Cambridge
+  date: '2026-07-14'
+  type: paper
+  beat: life-sciences
+  note: Designs de novo binders that capture the aggregation-driving region of alpha-synuclein in an extended conformation,
+    reports three with nanomolar affinity that suppress fibril formation at substoichiometric ratios, and fits aggregation
+    kinetics to say which microscopic step each one blocks.
+  well: C2
+  id: potent-substoichiometric-inhibition-of-alpha-syn
+- title: Machine learning-assisted directed evolution of plant Rubisco
+  url: https://doi.org/10.64898/2026.07.25.740226
+  org: Massachusetts Institute of Technology
+  date: '2026-07-27'
+  type: paper
+  beat: life-sciences
+  note: Uses an inverse-folding model to pick positions in the large subunit of tobacco Rubisco for library design,
+    selects variants in Rubisco-dependent bacteria, and reports one substitution that raises carboxylation rate
+    by 29% and aerobic carboxylation efficiency by 43%.
+  well: C4
+  id: machine-learning-assisted-directed-evolution-of
+- title: 'The Human Bindome: A Proteome-scale Atlas of Designed Binder Candidates'
+  url: https://doi.org/10.64898/2026.07.30.741542
+  org: EPFL
+  date: '2026-07-30'
+  type: dataset
+  beat: life-sciences
+  note: Runs an experimentally benchmarked binder-design method over the human proteome in a parallelized framework
+    and releases 306,146 candidate binders covering 8,296 proteins, each with a sequence, a predicted complex and
+    in silico confidence metrics, none of them made or tested.
+  well: C5
+  id: the-human-bindome-a-proteome-scale
+- title: Folding, Reasoning, and Scaling with Open-source Drug Discovery Engine
+  url: https://arxiv.org/abs/2607.03787
+  org: Aureka AI
+  date: '2026-07-04'
+  type: model
+  beat: chemistry-medicine
+  note: Releases an all-atom co-folding model with training code, inference pipelines, checkpoints and benchmarks,
+    reports accuracy at the level the authors ascribe to IsoDDE, and identifies two scaling directions for co-folding
+    models.
+  well: D1
+  id: folding-reasoning-and-scaling-with-open
+- title: 'A Quiet Failure in Calibrated Virtual Screening: Marginal Conformal Prediction Under-Covers the Minority
+    Class, and a Class-Conditional Fix Recovers It'
+  url: https://arxiv.org/abs/2607.06605
+  org: ''
+  date: '2026-07-07'
+  type: paper
+  beat: chemistry-medicine
+  note: Shows across four datasets that conformal prediction sets meeting a 90% global coverage target leave the
+    rare class far below it, falling to 64.8% on blood-brain-barrier penetration and 4.2% on clinical-trial toxicity,
+    and that a class-conditional variant restores coverage for a modest increase in set size.
+  well: D2
+  id: a-quiet-failure-in-calibrated-virtual
+- title: 'CHIMIYA-1: An Autoselection Foundation Model for ADMET Property Prediction, Rigorously Benchmarked Against
+    the Therapeutics Data Commons ADMET Group'
+  url: https://doi.org/10.64898/2026.07.20.739289
+  org: Covenant Biosciences, with Saint Joseph's University
+  date: '2026-07-23'
+  type: paper
+  beat: chemistry-medicine
+  note: Evaluates a company's proprietary ADMET model against all 22 endpoints of a public benchmark, reporting
+    five independently seeded runs per endpoint and a structural-overlap audit that found no train-test overlap,
+    and places first on four endpoints and in the top decile on twenty.
+  well: D5
+  id: chimiya-1-an-autoselection-foundation-model
+- well: E1
+  title: 'Euclid: Discovery of 31 new quasars at 6.6 < z < 7.8'
+  url: https://arxiv.org/abs/2607.03432
+  org: Euclid Consortium
+  date: '2026-07-03'
+  type: paper
+  beat: physical-world
+  note: Candidate very distant quasars were picked from about 3000 square degrees of Euclid imaging using three
+    statistical and machine-learning selection methods, then observed with Keck, Magellan and the Large Binocular
+    Telescope.
+  id: euclid-discovery-of-31-new-quasars
+- well: E3
+  title: When Literature Data Mislead Artificial Intelligence in Materials Discovery
+  url: https://arxiv.org/abs/2609.01621
+  org: ''
+  date: '2026-07-18'
+  type: paper
+  beat: physical-world
+  note: Traces solid-electrolyte conductivity values from source articles to curated datasets and finds recurring
+    mismatches between text and figures, unit inconsistencies and missing measurement context that pass routine
+    preprocessing.
+  id: when-literature-data-mislead-artificial-intellig
+- well: E4
+  title: 'AIFS-TC: A simple correction competitive with the operational frontier for tropical cyclone intensity
+    forecasting'
+  url: https://arxiv.org/abs/2608.09959
+  org: ''
+  date: '2026-07-24'
+  type: paper
+  beat: physical-world
+  note: A correction to a learned weather model that brings its forecasts of tropical cyclone intensity level with
+    operational systems. The abstract states that the system was designed and built by Claude Fable 5 in a few hours
+    under the direction of one scientist.
+  id: aifs-tc-a-simple-correction-competitive
+- well: F3
+  title: The unintended consequences of large language models as a labor-augmenting technology in science
+  url: https://arxiv.org/abs/2607.17397
+  org: ''
+  date: '2026-07-19'
+  type: paper
+  beat: science-of-science
+  note: A model from foraging theory of how scientists divide their time among projects when language models augment
+    their labor. Where the models mainly ease publishing existing data, researchers become less selective about
+    what they publish.
+  id: the-unintended-consequences-of-large-language
+- well: F4
+  title: Scientific exploration, collaboration and labor division in the large language model era
+  url: https://arxiv.org/abs/2607.20923
+  org: ''
+  date: '2026-07-23'
+  type: paper
+  beat: science-of-science
+  note: Links full texts to the publication histories of 775,323 scientists and analyzes contribution statements
+    from 137,120 papers. After 2022 scientists published in more distant fields and entered new ones.
+  id: scientific-exploration-collaboration-and-labor-d
+- well: F6
+  title: Q&A from the slop trenches
+  url: https://geospatialml.com/posts/reviewing-ai-slop/
+  org: GeoSpatial ML (blog)
+  date: '2026-07-30'
+  type: essay
+  beat: science-of-science
+  note: Two machine-learning researchers report on 22 conference submissions they reviewed in summer 2026, of which
+    15 had fabricated citations, fabricated author lists or plainly machine-written text.
+  id: q-a-from-the-slop-trenches
+- well: F7
+  title: 'A robust association between LLM use and scientific productivity: Assessing stopping-time selection'
+  url: https://arxiv.org/abs/2607.28968
+  org: ''
+  date: '2026-07-31'
+  type: paper
+  beat: science-of-science
+  note: A reply to the critique that dating LLM adoption from an author's first detector-flagged abstract mechanically
+    produces a positive event-study path.
+  id: a-robust-association-between-llm-use
+- well: G1
+  title: Leanstral 1.5 119B A6B
+  url: https://huggingface.co/mistralai/Leanstral-1.5-119B-A6B
+  org: Mistral AI
+  date: '2026-07-01'
+  type: model
+  beat: infrastructure
+  note: An open-weight 'code agent model designed for Lean 4', built as part of the Mistral Small 4 family and used
+    through the Mistral Vibe command-line agent.
+  id: leanstral-1-5-119b-a6b
+- well: G2
+  title: 'Toward Trustworthy Autonomous Science: A Two-Year Community Roadmap'
+  url: https://arxiv.org/abs/2607.12113
+  org: ''
+  date: '2026-07-13'
+  type: policy-report
+  beat: infrastructure
+  note: A community roadmap for networked autonomous laboratories, updating one from a year earlier and noting both
+    faster progress than expected and a corrected flagship discovery result.
+  id: toward-trustworthy-autonomous-science-a-two
+- well: H1
+  title: Saving Academics from Themselves
+  url: https://asteriskmag.com/issues/15/saving-academics-from-themselves
+  org: Asterisk Magazine
+  date: '2026-07-01'
+  type: essay
+  beat: institutions
+  note: Munger, a social scientist, argues that universities will survive AI but that academics risk either banning
+    it or using it to multiply paper output ('brickmaxxing').
+  id: saving-academics-from-themselves
+- well: H3
+  title: 'Science: A New Golden Age'
+  url: https://www.whitehouse.gov/wp-content/uploads/2026/07/Science-A-New-Golden-Age.pdf
+  org: White House OSTP
+  date: '2026-07-21'
+  type: policy-report
+  beat: institutions
+  note: A 123-page report to the President that the White House describes as 'the first comprehensive rethinking
+    of the U.S. science and technology enterprise in over 80 years'.
+  id: science-a-new-golden-age
+- well: H4
+  title: NSF announces $400M investment in new national network of AI-programmable cloud laboratories in alignment
+    with the U.S. government's Genesis Mission
+  url: https://www.nsf.gov/tip/updates/nsf-announces-400m-investment-new-national-network-ai
+  org: US National Science Foundation
+  date: '2026-07-22'
+  type: initiative
+  beat: institutions
+  note: NSF funded 20 teams for four years to build a national network of remotely accessible automated laboratories
+    that run user-programmed, AI-enabled experimental workflows, as its contribution to the Genesis Mission.
+  id: nsf-announces-400m-investment-in-new
+note_bio: |
+  Protein engineering supplies the qualification. Computation rewrote the stable cores of three botulinum proteases, and the redesigned enzymes evolved further than the natural ones in every campaign; but establishing that stability was responsible took 44 continuous evolutions and reciprocal grafts of every evolved genotype ({{ai-redesigned-protease-evolution}}). Without that apparatus designs stayed predictions: half a peptide-interface benchmark recovered ({{vilya-2-molecular-interfaces}}), 306,146 binders released unmade ({{the-human-bindome-a-proteome-scale}}). A chemistry campaign fixed its predictions before synthesis and tripled acetate selectivity, inside a reaction network the chemists supplied ({{cothinker-catalyst-selectivity}}).

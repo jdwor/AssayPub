@@ -1,0 +1,243 @@
+# Edition 2: August 2026. Selected works live in content/works/ and name this edition and their well.
+# `shortlist` is the rest of the plate: works considered and not selected.
+number: 2
+slug: '002'
+title: August 2026
+subject: Outside tests
+cover: '#ff8a1f'
+dek: Work in AI for science released in August 2026.
+period:
+- '2026-08-01'
+- '2026-08-31'
+published: '2026-11-17'
+status: pilot
+funnel:
+  candidates: 555
+note: |-
+  The strongest work in August was tested against something outside the paper. Google DeepMind's cyclone model was scored against two seasons of recorded storms ({{operational-cyclone-forecasting}}), Germany's weather service verified its operational machine-learning model against a year of observations ({{aicon-an-operational-global-machine-learning}}), and Anthropic's proof about the zeros of the zeta function was re-proved by an outside number theorist within a month ({{more-than-two-thirds-of-the}}).
+
+  In the physical sciences the learned component works inside an older system. Both weather models start every forecast from a physics-based analysis, and the German one is trained on its service's own reanalysis. Each is weaker than the conventional system on some measure: cyclone intensity at long lead times in one case, surface pressure in the other. At Linköping a classifier sorted database entries to find overlooked layered compounds, and the group then made 11 new members of the family by combustion synthesis ({{mxenes-data-driven-discovery}}). The shortlist has more of the kind: anomaly detection in the CMS trigger ({{unsupervised-anomaly-detection-for-real-time}}) and learned control on two tokamaks ({{reinforcement-learning-for-vertical-position-con}}, {{real-time-virtual-circuits-for-plasma}}).
+
+  <!-- rows C and D -->
+
+  Mathematics arrived as company announcements. OpenAI published ten results with Lean files and no account of how they were obtained, and reissued the paper within a week after mathematicians objected to how earlier work was credited ({{ten-advances-in-mathematics-and-theoretical}}). Anthropic published transcripts of the work on its zeta result, named the prior work the result draws on, and had outside experts read the paper. Timothy Gowers attributes the results so far to broad knowledge and wide search ({{gowers-what-maths-are-llms-good-at}}). Terence Tao argues that if proofs become plentiful, verifying them, explaining them and absorbing them into a field will limit progress ({{mathematics-in-the-age-of-ai}}), and Daniel Litt describes incentives under which the abundance would be wasted ({{the-end-of-mathematics}}).
+
+  Studies of AI in research practice relied on indirect measures. A model trained to replicate published figures outscored larger agents by the judge it was trained against ({{training-ai-scientists-to-replicate-research}}). An estimate that 89% of biomedical papers show signs of language-model assistance counts any use, editing included ({{most-biomedical-publications-show-signs-of}}). Economics papers that disclose AI use credit more research assistants, among the authors who choose to disclose ({{ai-and-the-research-assistant}}).
+shortlist:
+- well: A2
+  title: 'How Do Agents Fail on AutoResearch: End-to-End Diagnostic Evaluation on 100 Real-World Frontier Research
+    Tasks'
+  url: https://arxiv.org/abs/2608.14905
+  org: ''
+  date: '2026-08-14'
+  type: benchmark
+  beat: autonomous-discovery
+  note: A benchmark of 100 tasks taken from published work in seven fields, covering the research cycle from ideation
+    to review, with 800 recorded runs from eight agent configurations annotated step by step.
+  id: how-do-agents-fail-on-autoresearch
+- well: A3
+  title: 'Beyond Execution: Auditing Experimental Fidelity in LLM-Driven Scientific Research'
+  url: https://arxiv.org/abs/2608.26753
+  org: ''
+  date: '2026-08-27'
+  type: paper
+  beat: autonomous-discovery
+  note: Reports that agents reproducing experiments often quietly shrink datasets or training budgets or replace
+    failed components with lookup functions, and proposes an auditing framework that checks runs against the reference
+    paper.
+  id: beyond-execution-auditing-experimental-fidelity
+- well: A4
+  title: Automated Researchers Can Mitigate Well-characterized Alignment Failures
+  url: https://arxiv.org/abs/2608.28945
+  org: Anthropic Fellows Program
+  date: '2026-08-28'
+  type: paper
+  beat: autonomous-discovery
+  note: Tests whether automated alignment researchers, agents that propose training methods and data, run them and
+    iterate, can reduce measurable alignment failures such as deception, sycophancy and jailbreaks in a target model.
+  id: automated-researchers-can-mitigate-well-characte
+- well: B2
+  title: The crisis of AI-generated mathematics
+  url: https://arxiv.org/abs/2608.02859
+  org: ''
+  date: '2026-08-03'
+  type: essay
+  beat: mathematics-theory
+  note: Max Weinreich argues that mathematicians should oppose the use of AI in mathematics outright, the opposite
+    of the response Terence Tao gives ({{mathematics-in-the-age-of-ai}}).
+  id: the-crisis-of-ai-generated-mathematics
+- well: B6
+  title: Mathematics is Much More than Proof
+  url: https://www.tobyord.com/writing/mathematics-is-more-than-proof
+  org: Toby Ord
+  date: '2026-08-23'
+  type: essay
+  beat: mathematics-theory
+  note: Toby Ord places AI proof in a century of automation in mathematics and argues that asking the right questions
+    and opening new fields sit above proof, with no benchmarks or verifiable rewards yet for either.
+  id: mathematics-is-much-more-than-proof
+- title: 'Safety First: Input Screening for Protein Design Tools'
+  url: https://doi.org/10.64898/2026.08.04.740855
+  org: Nuclear Threat Initiative and Technology Governance Solutions
+  date: '2026-08-07'
+  type: paper
+  beat: life-sciences
+  note: Proposes screening what a designed protein binds to, with a database of 14,541 human proteoform targets
+    classified by biosecurity risk and an embedding method built on the ESM-C protein language model.
+  id: safety-first-input-screening-for-protein
+  well: C1
+- title: 'β-lactoglobulin a new whey: Computational redesign improves stability and nutritional composition'
+  url: https://doi.org/10.64898/2026.08.17.745312
+  org: KTH Royal Institute of Technology
+  date: '2026-08-18'
+  type: paper
+  beat: life-sciences
+  note: Redesigns up to 20% of a whey protein's residues with an inverse-folding model for stability, and separately
+    raises its branched-chain amino acid content with a physics-based method, then measures titer, melting temperature,
+    oligomeric state and interfacial behavior of the variants.
+  well: C3
+  id: lactoglobulin-a-new-whey-computational-redesign
+- title: A Mammalian High-Throughput Screen for AI-Designed Peptide-Guided Protein Degraders
+  url: https://doi.org/10.64898/2026.08.24.746873
+  org: University of Pennsylvania
+  date: '2026-08-26'
+  type: paper
+  beat: life-sciences
+  note: Screens pooled libraries of peptide guides from protein language models, fused to an E3 ligase domain, in
+    human reporter cell lines, and recovers degraders that lower endogenous beta-catenin, GFAP, a Ewing sarcoma
+    fusion oncoprotein and GATA2.
+  well: C6
+  id: a-mammalian-high-throughput-screen-for
+- title: Unobserved Sequence Space Has Many Functional Proteins
+  url: https://doi.org/10.64898/2026.08.24.746828
+  org: Lawrence Livermore National Laboratory
+  date: '2026-08-26'
+  type: paper
+  beat: life-sciences
+  note: Measures the experimental fitness of highly diverse natural and new-to-nature sequences across three protein
+    families, finds many functional sequences with low identity to any known ortholog, and reports that protein
+    language models and Potts models predict their function accurately but inconsistently.
+  well: C7
+  id: unobserved-sequence-space-has-many-functional
+- title: Artificial intelligence in drug discovery — what it is, where we stand and the path forward
+  url: https://www.nature.com/articles/s41573-026-01496-2
+  org: Andreas Bender and 15 co-authors, Nature Reviews Drug Discovery
+  date: '2026-08-07'
+  type: paper
+  beat: chemistry-medicine
+  note: The period's main review of the field, arguing that evidence of clinically relevant impact is limited and
+    that benchmarking should move from model validation to whether a tool changes a decision; paywalled, with only
+    the abstract and reference list public.
+  id: artificial-intelligence-in-drug-discovery-what
+  well: D1
+- title: 'Genotypic Triggers: Exposing Pharmacogenomic Blind Spots via Host-Specific Backdoors in Generative Antimicrobial
+    Peptide Models'
+  url: https://arxiv.org/abs/2608.06779
+  org: ''
+  date: '2026-08-07'
+  type: paper
+  beat: chemistry-medicine
+  note: Shows that peptide generators can be backdoored to shift their output toward sequences with elevated predicted
+    immunogenicity for carriers of one HLA allele while keeping potency, low general toxicity and a normal profile
+    for non-carriers, with all risk estimates computational.
+  well: D2
+  id: genotypic-triggers-exposing-pharmacogenomic-blin
+- title: 'Towards Biomedical Superintelligence: from AI agents to AI innovators'
+  url: https://liangchang.substack.com/p/towards-biomedical-superintelligence
+  org: Jorge S. Reis-Filho and Liang Chang
+  date: '2026-08-20'
+  type: essay
+  beat: chemistry-medicine
+  note: Argues that the next step for AI in biomedicine is systems that originate falsifiable hypotheses and generate
+    the evidence to resolve them, and sets out five requirements, including experiment-in-the-loop design and fit-for-purpose
+    evaluation.
+  id: towards-biomedical-superintelligence-from-ai-age
+  well: D4
+- title: De novo Design of Macrocyclic Molecular Glues
+  url: https://doi.org/10.64898/2026.08.21.746227
+  org: Stockholm University
+  date: '2026-08-22'
+  type: paper
+  beat: chemistry-medicine
+  note: Designs macrocyclic peptides from sequence alone to bridge an E3 ligase to KRAS and to BRD4, shows induced
+    proximity and ligase-dependent degradation in live cells, and finds that the same macrocycle degrades its target
+    in one patient-derived tumoroid model and stabilizes it in another.
+  well: D5
+  id: de-novo-design-of-macrocyclic-molecular
+- well: E1
+  title: Unsupervised anomaly detection for real-time data acquisition in the CMS experiment at the Large Hadron
+    Collider
+  url: https://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/MLG-25-001/index.html
+  org: CMS Collaboration, CERN
+  date: '2026-08-03'
+  type: lab-report
+  beat: physical-world
+  note: Reports the first sustained deployment of unsupervised machine-learning anomaly detection in the hardware
+    trigger of an LHC experiment.
+  id: unsupervised-anomaly-detection-for-real-time
+- well: E4
+  title: Reinforcement learning for vertical position control on the EXL-50U spherical tokamak
+  url: https://arxiv.org/abs/2608.20901
+  org: Beijing ENN Fusion Energy Science and Technology Co., Ltd.
+  date: '2026-08-21'
+  type: paper
+  beat: physical-world
+  note: A private fusion company trains a reinforcement-learning controller (PPO) for vertical plasma position in
+    a simulator reconstructed from its own discharges, then hands it control of the real EXL-50U spherical tokamak
+    briefly.
+  id: reinforcement-learning-for-vertical-position-con
+- well: E6
+  title: 'Real-time virtual circuits for plasma shape control via neural network emulators: experimental demonstration
+    on MAST Upgrade'
+  url: https://arxiv.org/abs/2608.28468
+  org: UK Atomic Energy Authority
+  date: '2026-08-28'
+  type: paper
+  beat: physical-world
+  note: Reports the first closed-loop use on a tokamak of plasma-shape control matrices ('virtual circuits') computed
+    in real time from neural-network emulators of the plasma equilibrium instead of being pre-computed and hand-scheduled.
+  id: real-time-virtual-circuits-for-plasma
+- well: F1
+  title: 'AI-Assisted Peer Review Across Research Communities: From Reviewer AI Policies to LLM Review Quality'
+  url: https://arxiv.org/abs/2608.03581
+  org: Technical University of Munich
+  date: '2026-08-04'
+  type: paper
+  beat: science-of-science
+  note: A survey of reviewer-facing AI policies at 111 AI conferences and medical journals, with an evaluation of
+    machine-written reviews of submissions to ICLR 2026 and Nature Communications.
+  id: ai-assisted-peer-review-across-research
+- well: G1
+  title: WeatherNext 2 and WeatherNext Cyclones
+  url: https://github.com/google-deepmind/weathernext
+  org: Google DeepMind
+  date: '2026-08-06'
+  type: model
+  beat: infrastructure
+  note: Code and pretrained weights for WeatherNext 2, described in the README as 'the global, medium-range atmospheric
+    and cyclone forecasting model developed by Google DeepMind and Google Research', together with WeatherNext Cyclones.
+  id: weathernext-2-and-weathernext-cyclones
+- well: G2
+  title: FormalVerse (dataset) and MathForm-8B (model)
+  url: https://huggingface.co/datasets/openbmb/FormalVerse
+  org: OpenBMB
+  date: '2026-08-14'
+  type: dataset
+  beat: infrastructure
+  note: 'FormalVerse is described on its card as ''a verified Lean 4 autoformalization dataset'' released with the
+    paper ''MathForm: Scaling Mathematical Autoformalization with Knowledge Retrieval and Verification-Guided Refinement''.'
+  id: formalverse-dataset-and-mathform-8b-model
+- well: G3
+  title: 'FormalTCS: Benchmarking End-to-End Frontier Formal Theoretical Computer Science Research of Large Language
+    Models'
+  url: https://arxiv.org/abs/2608.20153
+  org: Harbin Institute of Technology
+  date: '2026-08-20'
+  type: benchmark
+  beat: infrastructure
+  note: A benchmark of 143 instances from papers accepted to STOC, FOCS, SODA and COLT, with expert-verified Lean
+    statements and proofs. The best model does far worse at translating claims into formal statements than at proving
+    statements it is given.
+  id: formaltcs-benchmarking-end-to-end-frontier
+note_bio: |
+  Antibody design bears it out: the learned part did best where it stayed inside the older one. Designs that won on affinity reused a heavy-chain CDR3 from the data supplied and changed a few residues elsewhere, and developability followed the cluster a design came from ({{aintibody-blinded-benchmark}}). Outside tests can disagree with each other: two contract laboratories in different assay formats split on 136 of the 1,235 designs both scored ({{claude-protein-binder-design}}). Arc withheld new Perturb-seq data to build the equivalent standard for perturbation prediction ({{virtual-cell-challenge-2026}}), while Phase II, where clinical worth would show, is the stage least touched ({{lowe-ai-drug-discovery-really}}).

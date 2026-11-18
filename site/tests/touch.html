@@ -1,0 +1,50 @@
+<!doctype html><meta charset="utf-8"><title>Cover touch check</title>
+<!-- Loads a cover in a frame of a given size and touches wells the way a finger does (a touch pointer, then a
+     click). Reports whether the first touch shows the label as a bar and holds the link back, whether the bar
+     stays inside the window and carries the link, whether a second touch of the same well goes through, and
+     whether touching elsewhere puts the bar away. With &hold=1 the bar is left showing, for a screenshot.
+     Run through scripts/check_cover.sh. -->
+<body style="margin:0;background:#888"><pre id="out" style="margin:0;height:0;overflow:hidden">pending</pre>
+<script>
+const q = new URLSearchParams(location.search);
+const W = +q.get("w") || 390, H = +q.get("h") || 844, P = q.get("p") || "index.html", HOLD = q.get("hold");
+const f = document.createElement("iframe");
+f.style.cssText = `width:${W}px;height:${H}px;border:0;display:block`;
+f.src = P; document.body.appendChild(f);
+f.onload = () => setTimeout(() => {
+  const d = f.contentDocument, w = f.contentWindow;
+  d.getAnimations().forEach((a) => a.finish());
+  let went = null;
+  d.addEventListener("click", (e) => { went = !e.defaultPrevented; e.preventDefault(); });   // record, and stay on the page
+  const touch = (el) => {
+    went = null;
+    el.dispatchEvent(new w.PointerEvent("pointerdown", { pointerType: "touch", bubbles: true }));
+    el.dispatchEvent(new w.PointerEvent("pointerleave", { pointerType: "touch" }));
+    el.dispatchEvent(new w.MouseEvent("click", { bubbles: true, cancelable: true }));
+    return went;
+  };
+  const tip = d.getElementById("tip");
+  const wells = [...d.querySelectorAll("a.d")].filter((e) => e.getClientRects().length);
+  const small = Math.min(...wells.map((e) => { const b = e.getBoundingClientRect(); return Math.min(b.width, b.height); }));
+  let held = 0, noBar = 0, outside = 0, noLink = 0, unmarked = 0, second = 0;
+  for (const e of wells) {
+    if (touch(e) !== false) held++;                                   // the first touch must not follow the link
+    if (tip.hidden || !tip.classList.contains("bar")) { noBar++; continue; }
+    const b = tip.getBoundingClientRect();
+    if (b.left < 0 || b.right > w.innerWidth + 0.5 || b.bottom > w.innerHeight + 0.5 || b.top < w.innerHeight / 2) outside++;
+    if (tip.querySelector(".open").href !== e.href) noLink++;
+    if (!e.classList.contains("hot")) unmarked++;
+    if (touch(e) !== true) second++;                                  // the second touch of the same well opens it
+  }
+  const first = wells.find((e) => e.classList.contains("lead")) || wells[0];
+  touch(first);
+  let away = 0;
+  if (!HOLD) {
+    d.querySelector(".mast").dispatchEvent(new w.PointerEvent("pointerdown", { pointerType: "touch", bubbles: true }));
+    if (!tip.hidden || d.querySelector(".hot")) away = 1;
+  }
+  const sw = d.documentElement.scrollWidth;
+  document.getElementById("out").textContent = "RESULT " + JSON.stringify({ touch: true, w: W, p: P, wells: wells.length, smallest: Math.round(small),
+    overflow: sw > w.innerWidth, followedOnFirst: held, noBar, barOutside: outside, wrongLink: noLink, unmarked, secondBlocked: second, notPutAway: away });
+}, 500);
+</script></body>
