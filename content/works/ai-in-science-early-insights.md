@@ -1,5 +1,5 @@
 ---
-short: AI in Science
+short: 'Google: how scientists use AI'
 title: 'AI in Science: Early Insights'
 authors:
 - Mihai Codreanu

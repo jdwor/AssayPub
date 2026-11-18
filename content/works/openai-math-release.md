@@ -1,5 +1,5 @@
 ---
-short: openai/math
+short: OpenAI's 720 math manuscripts
 title: openai/math
 authors:
 - OpenAI

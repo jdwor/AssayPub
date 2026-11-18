@@ -1,5 +1,5 @@
 ---
-short: Weather to climate
+short: Weather AI for climate projection
 title: Artificial intelligence pathways from weather to climate
 authors:
 - Tom Beucler

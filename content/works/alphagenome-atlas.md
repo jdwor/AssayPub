@@ -1,5 +1,5 @@
 ---
-short: "AlphaGenome Atlas"
+short: "DeepMind predicts every DNA change"
 title: 'AlphaGenome Atlas: a high-resolution map of human DNA'
 authors:
 - Pushmeet Kohli

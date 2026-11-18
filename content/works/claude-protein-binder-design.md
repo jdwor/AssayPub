@@ -1,5 +1,5 @@
 ---
-short: "1,440 binders measured"
+short: "1,440 Claude protein designs"
 title: Claude protein binder design (data release v1.0)
 authors:
 - Anthropic

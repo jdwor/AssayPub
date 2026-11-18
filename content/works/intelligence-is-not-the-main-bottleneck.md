@@ -1,5 +1,5 @@
 ---
-short: Not the bottleneck
+short: Teslo on medicine's real limits
 title: Intelligence is not the main bottleneck
 authors:
 - Ruxandra Teslo

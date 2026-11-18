@@ -1,5 +1,5 @@
 ---
-short: Litt's stalled future
+short: 'Litt: how mathematics could stall'
 title: The End of Mathematics
 authors:
 - Daniel Litt

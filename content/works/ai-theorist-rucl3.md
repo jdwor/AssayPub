@@ -1,5 +1,5 @@
 ---
-short: AI Theorist on RuCl₃
+short: Agents explain a magnet's spectra
 title: The AI Theorist reveals excitonic structure in α-RuCl₃
 authors:
 - Hongjian Zhou

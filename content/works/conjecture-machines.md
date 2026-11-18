@@ -1,5 +1,5 @@
 ---
-short: Conjecture Machines
+short: 'DeepMind: validation is the limit'
 title: Conjecture Machines
 authors:
 - Don Wallace

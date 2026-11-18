@@ -1,5 +1,5 @@
 ---
-short: Navier–Stokes blowup
+short: Navier–Stokes blowup, disputed
 title: Finite Time Blowup for Navier–Stokes
 authors:
 - OpenAI

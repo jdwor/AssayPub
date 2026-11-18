@@ -1,5 +1,5 @@
 ---
-short: MXenes
+short: Overlooked MXenes in old data
 title: Data-driven discovery and rapid, direct synthesis of MXenes
 authors:
 - Ali Saffar Shamshirgar

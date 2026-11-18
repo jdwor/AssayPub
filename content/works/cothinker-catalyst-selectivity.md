@@ -1,5 +1,5 @@
 ---
-short: "Catalyst selectivity"
+short: "Model steered a CO2 catalyst"
 title: Reaction-network reasoning with frontier models for experimentally confirmed catalyst-selectivity
   hypotheses
 authors:

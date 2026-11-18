@@ -1,5 +1,5 @@
 ---
-short: "ICML review trial"
+short: ICML tests LLMs in review
 title: 'Use and Effects of LLMs in Peer Review: A Randomized Experiment and Survey at ICML 2026'
 authors:
 - Sunnie S. Y. Kim

@@ -1,5 +1,5 @@
 ---
-short: "Crop the target"
+short: "Cropping the target saves compute"
 title: Agent-guided epitope excision enables economical de novo binder design
 authors:
 - Jun W. Kim

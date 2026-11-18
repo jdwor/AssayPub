@@ -1,5 +1,5 @@
 ---
-short: Genesis Mission
+short: $5B for the Genesis Mission
 title: Trump Administration Announces More Than $5 Billion for the Genesis Mission, a National Mission on AI for
   Science
 authors:

@@ -1,5 +1,5 @@
 ---
-short: "AIntibody benchmark"
+short: "Blind test of AI antibodies"
 title: A blinded, prospective benchmark of in silico antibody discovery anchored to experimental affinity and developability
 authors:
 - M. Frank Erasmus

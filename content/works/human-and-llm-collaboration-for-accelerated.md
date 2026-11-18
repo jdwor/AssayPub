@@ -1,5 +1,5 @@
 ---
-short: Human versus LLM recipes
+short: LLM matches chemists' synthesis recipes
 title: Human and LLM Collaboration for Accelerated Materials Synthesis and Discovery
 authors:
 - Gregory Bassen

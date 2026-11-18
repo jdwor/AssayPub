@@ -1,5 +1,5 @@
 ---
-short: arXiv surge
+short: arXiv runs 17% above trend
 title: Is the arXiv Apocalypse upon us? A break in preprint growth coincident with agentic AI
 authors:
 - Carlo R. Contaldi

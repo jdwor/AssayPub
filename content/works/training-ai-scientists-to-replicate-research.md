@@ -1,5 +1,5 @@
 ---
-short: Training agents to replicate
+short: Training agents to replicate papers
 title: Training AI Scientists to Replicate Research
 authors:
 - Damon Falck

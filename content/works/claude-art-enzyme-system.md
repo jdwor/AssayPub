@@ -1,5 +1,5 @@
 ---
-short: "Enzyme system claim"
+short: "Claude's claimed enzyme discovery"
 title: Claude discovers a novel enzyme system with CRISPR-like repeats
 authors:
 - Anthropic

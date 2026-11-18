@@ -1,5 +1,5 @@
 ---
-short: Faster 3SUM, APSP
+short: Faster 3SUM and shortest paths
 title: Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs
 authors:
 - Josh Alman

@@ -1,5 +1,5 @@
 ---
-short: Bolzano at scale
+short: 200 open problems claimed solved
 title: 'Bolzano: From Expert-Guided Proof Search to Automated Open-Problem Solving'
 authors:
 - Adrián Zámečník

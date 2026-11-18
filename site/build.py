@@ -159,7 +159,9 @@ def load():
         # `short` is the label printed on the cover. Without one the title is cut to fit.
         if not w.get("short"):
             print(f"  note: {p.name} has no `short` label; using the start of its title")
-            w["short"] = " ".join(w["title"].split()[:4])
+            w["short"] = " ".join(w["title"].split()[:5])
+        if len(str(w["short"]).split()) > 5:
+            fail(f"{p.name}: the cover title `short` has {len(str(w['short']).split())} words; the limit is five")
         w["col"] = int(w["well"][1:])
         w["address"] = f"{int(w['edition'])} · {w['well']}"
         works.append(w)

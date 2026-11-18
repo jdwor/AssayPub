@@ -1,5 +1,5 @@
 ---
-short: OpenAI's ten results
+short: OpenAI's ten math results
 title: Ten Advances in Mathematics and Theoretical Computer Science
 authors:
 - OpenAI

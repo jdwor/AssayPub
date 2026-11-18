@@ -1,5 +1,5 @@
 ---
-short: "Shadow evaluations"
+short: Agents stall on open research
 title: Can AI agents conduct open-ended AI research? Early evidence from two case studies
 authors:
 - Peter Kirgis

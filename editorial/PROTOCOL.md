@@ -92,7 +92,7 @@ For a dataset, benchmark or tool, read the paper and the documentation. If part 
 
 ## Stage 5. Assess
 
-Write one file per selected work in `content/works/<slug>.md`, copying the front matter of an existing file. The build rejects a file with a missing field or a term outside the vocabulary. Leave `well: TBD`; a script assigns wells. Set `short` to a label of at most four words; it is what the cover prints beside the work's well.
+Write one file per selected work in `content/works/<slug>.md`, copying the front matter of an existing file. The build rejects a file with a missing field or a term outside the vocabulary. Leave `well: TBD`; a script assigns wells. Set `short` to the title the cover prints beside the work's well: at most five words, as plain as five words allow. A reader should be able to tell what the work is, so name the subject and, where it fits, the result ("200 open problems claimed solved", "Agents stall on open research"). A little life is fine ("Sixteen agents, one error"); a system's or paper's name alone ("Bolzano at scale"), a quip that needs the article ("Crop the target") and bare jargon ("MXenes") are not.
 
 - **Read the work in full**, for notices as well as lead selections (see Stage 4). Set `read: full`. If part could not be read, set `read: partial` and `read_gap: "<what was not read and why>"`. The build rejects an assessment without these fields. Record what else was checked under `checked`.
 - **Describe before judging.** State what the work is and what it claims in terms its authors would accept.

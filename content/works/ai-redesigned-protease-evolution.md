@@ -1,5 +1,5 @@
 ---
-short: "Redesigned starting points"
+short: "Redesigned enzymes evolve better"
 title: AI-redesigned starting points and outcomes enhance protein evolution
 authors:
 - Nicholas A. Krasnow

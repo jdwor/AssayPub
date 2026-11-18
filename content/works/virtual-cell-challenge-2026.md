@@ -1,5 +1,5 @@
 ---
-short: "Zero-shot cell contexts"
+short: "Arc contest: unseen cell responses"
 title: 'The 2026 Virtual Cell Challenge: predicting perturbation responses in cell contexts a model has
   never seen'
 authors:

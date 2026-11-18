@@ -1,5 +1,5 @@
 ---
-short: "Twelve biology problems"
+short: "Twelve biology problems for AI"
 title: The Millennium Problems for Biology
 authors:
 - Sam Rodriques

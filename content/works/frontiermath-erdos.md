@@ -1,5 +1,5 @@
 ---
-short: Erdős benchmark
+short: 68 Erdős problems, five resolved
 title: FrontierMath Erdős
 authors:
 - Tom Adamczewski

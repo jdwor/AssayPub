@@ -1,5 +1,5 @@
 ---
-short: "Nine replayed campaigns"
+short: "Agent replays nine drug projects"
 title: 'From Benchmark to Bench: Can Agents Survive Real-World Drug Discovery?'
 authors:
 - Pierre Llompart

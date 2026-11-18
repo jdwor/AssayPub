@@ -1,5 +1,5 @@
 ---
-short: Scarcity inversion
+short: Science when reasoning is cheap
 title: When Scientific Cognition Is No Longer Scarce
 authors:
 - Nathan DeBardeleben

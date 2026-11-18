@@ -1,5 +1,5 @@
 ---
-short: Cyclone forecasts
+short: AI cyclone forecasts beat ECMWF
 title: Operational tropical cyclone forecasting with AI
 authors:
 - Ferran Alet

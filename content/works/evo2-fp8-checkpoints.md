@@ -1,5 +1,5 @@
 ---
-short: "One matrix multiply"
+short: "GPUs break a DNA model"
 title: 'Accuracy is not compatibility: two Evo 2 checkpoints hinge on one FP8 matrix multiplication'
 authors:
 - Xun Ding

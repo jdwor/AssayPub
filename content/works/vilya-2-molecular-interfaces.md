@@ -1,5 +1,5 @@
 ---
-short: "Peptide interfaces"
+short: "Predicting how peptide drugs bind"
 title: Accurate structural modeling of chemically diverse molecular interfaces with Vilya-2
 authors:
 - Pascal Sturmfels

@@ -1,5 +1,5 @@
 ---
-short: Phantom references audited
+short: Fabricated citations in accepted papers
 title: 'Phantom References: Hallucinated Citations That Survive Peer Review at Top-Tier Conferences'
 authors:
 - Mark Russinovich

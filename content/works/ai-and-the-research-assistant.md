@@ -1,5 +1,5 @@
 ---
-short: AI and research assistants
+short: AI users credit more assistants
 title: 'AI and the research assistant: Evidence from economics working papers'
 authors:
 - Johan Fourie

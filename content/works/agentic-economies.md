@@ -1,5 +1,5 @@
 ---
-short: Agentic economies
+short: Markets for scarce experiments
 title: Agentic Economies for Autonomous Scientific Discovery
 authors:
 - Nenad Tomasev

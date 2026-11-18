@@ -1,5 +1,5 @@
 ---
-short: "Pd-oxide catalysts"
+short: Automated lab finds durable catalyst
 title: AI-guided high-throughput discovery of iridium- and ruthenium-free palladium-oxide catalysts for durable
   acidic oxygen evolution
 authors:

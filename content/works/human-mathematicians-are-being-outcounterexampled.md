@@ -1,5 +1,5 @@
 ---
-short: Counterexamples, checked in Lean
+short: AI counterexamples, checked in Lean
 title: Human mathematicians are being outcounterexampled
 authors:
 - Kevin Buzzard

@@ -1,5 +1,5 @@
 ---
-short: "Model ignored the drug"
+short: "Virtual cell model ignored drug"
 title: 'Discover, Falsify, Revise: Auditing Input-Use Claims from Source Code to Predictive Contribution
   in Agent-Discovered Cell Models'
 authors:

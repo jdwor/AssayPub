@@ -1,5 +1,5 @@
 ---
-short: Into the Unknown
+short: Agent papers fail integrity checks
 title: 'Into the Unknown: Benchmarking AI agents on open scientific research problems'
 authors:
 - Seungone Kim
