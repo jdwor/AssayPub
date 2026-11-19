@@ -6,6 +6,17 @@
 <title>{% block title %}{{ site.name }}{% endblock %}</title>
 <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
 <meta name="theme-color" content="{{ cover }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ self.title()|trim }}">
+<meta property="og:description" content="{{ self.description()|trim }}">
+{% if page_url %}<meta property="og:url" content="{{ page_url }}">
+{% endif %}
+<meta property="og:image" content="{{ card_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ card_alt }}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="{{ root }}static/fonts/besley-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ root }}static/fonts/archivo-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ root }}static/fonts/fonts.css">
@@ -30,13 +41,17 @@
 <main id="main">
 {% block main %}{% endblock %}
 </main>
-<footer class="colophon">
-  <nav class="cap" aria-label="Data and corrections">
+{# The same foot as the cover's: the site's sections on the right. The data files are listed on the Method page. #}
+<footer class="foot colophon cap">
+  <nav aria-label="Corrections and data">
     <a href="{{ root }}corrections/">Corrections</a>
-    <a href="{{ root }}api/works.json">works.json</a>
-    <a href="{{ root }}api/editions.json">editions.json</a>
-    <a href="{{ root }}feed.xml">Feed</a>
-    <a href="{{ root }}llms.txt">llms.txt</a>
+    <a href="{{ root }}method/#data">Data</a>
+  </nav>
+  <nav aria-label="Sections">
+    <a href="{{ root }}editions/">Editions</a>
+    <a href="{{ root }}topics/">Topics</a>
+    <a href="{{ root }}method/">Method</a>
+    <a href="{{ root }}charter/">Charter</a>
   </nav>
 </footer>
 {% endblock %}

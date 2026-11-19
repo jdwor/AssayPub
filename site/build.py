@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["jinja2>=3.1", "markdown-it-py>=3", "mdit-py-plugins>=0.4", "pyyaml>=6"]
+# dependencies = ["jinja2>=3.1", "markdown-it-py>=3", "mdit-py-plugins>=0.4", "pillow>=10", "pyyaml>=6"]
 # ///
 """Build the Assay site from content/.
 
@@ -31,6 +31,7 @@ import re
 import shutil
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -38,6 +39,8 @@ from markdown_it import MarkdownIt
 from markupsafe import Markup
 from mdit_py_plugins.anchors import anchors_plugin
 from mdit_py_plugins.footnote import footnote_plugin
+
+from card import draw_card
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT, SITE = ROOT / "content", ROOT / "site"
@@ -68,8 +71,9 @@ LINK_KINDS = {"material": "More from the authors", "response": "Responses and cr
 REQUIRED = ["title", "authors", "date", "type", "url", "beat", "edition", "well", "tier",
             "importance", "novelty", "evidence", "evidence_type", "independence", "checked", "standfirst"]
 BIO_SLOT = "<!-- rows C and D -->"
-# Cover colors, used in turn when an edition does not set `cover`. All take black ink.
-COVERS = ["#1fcf83", "#ffd60a", "#ff8a1f", "#ff8fc7", "#5cc8ff", "#b9a3ff", "#c4f000", "#ff6b5a"]
+# Cover colors, used in turn when an edition does not set `cover`. All take black ink. Chosen by the editor on
+# November 18, 2026 in place of fully saturated versions of the same eight hues.
+COVERS = ["#71cd99", "#e4ca69", "#f0a168", "#ef9fc5", "#7dc7f0", "#bcadf1", "#bddb6e", "#f39082"]
 SOURCES = {"arxiv": "arXiv", "biorxiv": "bioRxiv", "nber": "NBER", "feeds": "Journals, labs and blogs",
            "huggingface": "Hugging Face", "github": "GitHub", "grants.gov": "Grants.gov", "bluesky": "Bluesky",
            "hackernews": "Hacker News"}
@@ -358,13 +362,25 @@ def main():
     if DIST.exists():
         shutil.rmtree(DIST)
     shutil.copytree(SITE / "static", DIST / "static")
+    # The image a shared link shows: one card per edition, drawn from its plate (site/card.py).
+    for e in editions:
+        draw_card(e, site, DIST / "static" / "cards" / f"{e['slug']}.png")
 
     def page(path, template, **ctx):
         out = DIST / path
         out.parent.mkdir(parents=True, exist_ok=True)
         depth = len(Path(path).parts) - 1
-        ctx.setdefault("cover", (ctx.get("edition") or current)["cover"])
+        of = ctx.get("edition") or current
+        ctx.setdefault("cover", of["cover"])
         root = "../" * depth or "./"
+        if path == "404.html":   # served in place of any missing address, so its links start from the site's own path
+            root = urlparse(site.get("url") or "").path.rstrip("/") + "/"
+        # A page is shared with its edition's card. Link previews need full addresses, so these use the site's
+        # address when it is known (it is in a deployment) and a relative path otherwise.
+        card = f"static/cards/{of['slug']}.png"
+        ctx.setdefault("card_url", f"{site['url']}/{card}" if site.get("url") else root + card)
+        ctx.setdefault("card_alt", f"{site['name']} No. {of['number']}, {of['period_label']}: the edition's plate of selected and shortlisted works.")
+        ctx.setdefault("page_url", f"{site['url']}/{path.removesuffix('index.html')}" if site.get("url") else "")
         out.write_text(env.get_template(template).render(root=root, path=path, **ctx).replace("@root/", root))
 
     page("index.html", "edition.html", edition=current, is_home=True, section="current")
@@ -395,7 +411,7 @@ def main():
     for slug, p in pages.items():
         page(f"{slug}/index.html", "page.html", page=p, section=slug)
     page("404.html", "page.html", section="", page={
-        "title": "Page not found", "body": Markup("<p><a href='/'>Current edition</a></p>")})
+        "title": "Page not found", "body": Markup("<p><a href='@root/'>Current edition</a></p>")})
 
     # Machine-readable twins.
     def followup_json(f):

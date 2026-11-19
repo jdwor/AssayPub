@@ -1,4 +1,5 @@
-/* Assay. Two small behaviors: the labels for the cover's wells and the topic chart. No dependencies. */
+/* Assay. Three small behaviors: the labels for the cover's wells, the list of editions and the topic chart.
+   No dependencies. */
 
 // ---- the cover: a label for each well ------------------------------------------
 // A pointer over a well, or keyboard focus on it, shows the label beside the well. A finger gets the label as a
@@ -56,6 +57,18 @@ if (tip) {
   addEventListener("scroll", hide, { passive: true });
   addEventListener("resize", hide);
   addEventListener("pageshow", hide);
+}
+
+// ---- the cover: the list of editions under the number --------------------------
+// The list opens and closes without this. This puts it away on Escape, on a click or touch anywhere else, when
+// the focus leaves it, and when the page is returned to.
+const menu = document.querySelector(".edmenu");
+if (menu) {
+  const close = () => { menu.open = false; };
+  addEventListener("pointerdown", (e) => { if (menu.open && !menu.contains(e.target)) close(); }, true);
+  addEventListener("keydown", (e) => { if (e.key === "Escape" && menu.open) { close(); menu.firstElementChild.focus(); } });
+  menu.addEventListener("focusout", (e) => { if (e.relatedTarget && !menu.contains(e.relatedTarget)) close(); });
+  addEventListener("pageshow", close);
 }
 
 // ---- the topic chart: one series, monthly counts ------------------------------

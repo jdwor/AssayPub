@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><title>Cover editions-list check</title>
+<!-- Loads a cover in a frame of a given size and opens the list of editions under the number. Reports whether
+     the list opens, stays inside the window, leaves the rest of the page where it was, marks the edition being
+     shown, and is put away by Escape and by a touch anywhere else. Run through scripts/check_cover.sh. -->
+<body style="margin:0;background:#888"><pre id="out" style="margin:0;height:0;overflow:hidden">pending</pre>
+<script>
+const q = new URLSearchParams(location.search);
+const W = +q.get("w") || 1280, H = +q.get("h") || 800, P = q.get("p") || "index.html";
+const f = document.createElement("iframe");
+f.style.cssText = `width:${W}px;height:${H}px;border:0;display:block`;
+f.src = P; document.body.appendChild(f);
+f.onload = () => setTimeout(() => {
+  const d = f.contentDocument, w = f.contentWindow;
+  d.getAnimations().forEach((a) => a.finish());
+  const rect = (s) => { const e = d.querySelector(s); if (!e || !e.getClientRects().length) return null;
+    const b = e.getBoundingClientRect(); return [b.left, b.top, b.width, b.height].map(Math.round).join(","); };
+  const metrics = () => JSON.stringify({ sw: d.documentElement.scrollWidth, sh: d.documentElement.scrollHeight,
+    mast: rect(".mast"), no: rect(".mast .no"), matrix: rect(".matrix"), plate: rect(".plate"), foot: rect(".foot") });
+  const menu = d.querySelector(".edmenu"), summary = menu.querySelector("summary"), list = menu.querySelector("nav");
+  const base = metrics();
+  summary.click();
+  const opened = menu.open, moved = metrics() !== base;
+  const b = list.getBoundingClientRect();
+  const outside = b.left < 0 || b.top < 0 || b.right > w.innerWidth + 0.5 || b.bottom > w.innerHeight + 0.5;
+  const links = [...list.querySelectorAll("a")];
+  const current = links.filter((a) => a.getAttribute("aria-current")).length;
+  const wrapped = links.filter((a) => a.getBoundingClientRect().height > 48).length;   // a row on two lines
+  d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+  const escape = !menu.open;
+  summary.click();
+  d.querySelector(".foot").dispatchEvent(new w.PointerEvent("pointerdown", { pointerType: "touch", bubbles: true }));
+  const away = !menu.open;
+  document.getElementById("out").textContent = "RESULT " + JSON.stringify({ menu: true, w: W, p: P, links: links.length,
+    opened, moved, outside, current, wrapped, closedByEscape: escape, closedByTouchElsewhere: away });
+}, 500);
+</script></body>

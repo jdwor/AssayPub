@@ -55,7 +55,7 @@ Candidates are screened from titles and abstracts. Every work selected for an ed
 
 **Independence**: *self-reported by developer* (the authors built or sell the system the claims concern), *independent*, or *peer-reviewed*.
 
-Each assessment also states any conflicts of interest, says so when part of the work was not read, and shows whether an editor has reviewed it. What was checked for each assessment is recorded in the site's data file.
+Each assessment also states any conflicts of interest, says so when part of the work was not read, and shows whether an editor has reviewed it. What was checked for each assessment is recorded in the site's [data file](#data).
 
 ### Main claims
 
@@ -88,6 +88,17 @@ Assay links to the original and does not reproduce it. A page shows the authors'
 Other links on a page are grouped by what they are: more from the authors (code, data, appendices, other versions), responses and critiques by others, with their dates, and background.
 
 Assay's own text is available under CC BY 4.0.
+
+## Data
+
+The site's contents are also published as files, for use by programs.
+
+| File | Holds |
+|---|---|
+| [works.json](../api/works.json) | One record for each selected work: its ratings, claims, concerns, links and follow-ups |
+| [editions.json](../api/editions.json) | Each edition's counts, selections, shortlist and follow-ups |
+| [feed.xml](../feed.xml) | An Atom feed of the 60 most recent selections |
+| [llms.txt](../llms.txt) | A plain-text index of the site for language models |
 
 ## Use of AI
 

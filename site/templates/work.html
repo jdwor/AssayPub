@@ -107,11 +107,12 @@
       <p class="cl-note">{{ work.abstract_note or 'From the public metadata record.' }}</p>
     </section>
     {% endif %}
-
-    <nav class="pager" aria-label="More from this edition">
-      {% if prev %}<a href="{{ root }}works/{{ prev.slug }}/"><span class="cap">← {{ prev.well }}</span><span class="t">{{ prev.short }}</span></a>{% else %}<span></span>{% endif %}
-      {% if next %}<a href="{{ root }}works/{{ next.slug }}/"><span class="cap">{{ next.well }} →</span><span class="t">{{ next.short }}</span></a>{% endif %}
-    </nav>
   </article>
+
+  {# Outside the article, so that on a narrow screen the list of facts can come before it. #}
+  <nav class="pager" aria-label="More from this edition">
+    {% if prev %}<a href="{{ root }}works/{{ prev.slug }}/"><span class="cap">← {{ prev.well }}</span><span class="t">{{ prev.short }}</span></a>{% else %}<span></span>{% endif %}
+    {% if next %}<a href="{{ root }}works/{{ next.slug }}/"><span class="cap">{{ next.well }} →</span><span class="t">{{ next.short }}</span></a>{% endif %}
+  </nav>
 </div>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "macros.html" import dots %}
 {% block title %}{% if is_home %}{{ site.name }}: {{ site.tagline }}{% else %}No. {{ edition.number }}, {{ edition.title }} | {{ site.name }}{% endif %}{% endblock %}
-{% block description %}{{ edition.dek }}{% endblock %}
+{% block description %}{% if is_home %}{{ site.description }}{% else %}{{ edition.dek }}{% endif %}{% endblock %}
 {% block body_class %}cover-page{% endblock %}
 {% block page %}
 {% set ed = root ~ 'editions/' ~ edition.slug ~ '/' %}
@@ -10,17 +10,28 @@
     <h1>{{ site.name }}</h1>
     <p class="cap tagline">{{ site.tagline }}</p>
     <div class="meta"><span class="stack">
-      <span class="no">No. {{ edition.number }}</span>
+      {# The number opens a list of the editions, hung from the masthead's rule. #}
+      <details class="edmenu">
+        <summary class="no">No. {{ edition.number }}</summary>
+        <nav class="cap" aria-label="Editions">
+          {% for e in editions[:12] %}
+          <a href="{{ root }}editions/{{ e.slug }}/" style="--c: {{ e.cover }}"{% if e.slug == edition.slug %} aria-current="page"{% endif %}><b>No. {{ e.number }}</b>{{ e.period_label }}</a>
+          {% endfor %}
+          <a class="all" href="{{ root }}editions/">All editions</a>
+        </nav>
+      </details>
       {% if edition.status_short %}<span class="cap">{{ edition.status_short }}</span>{% endif %}
     </span></div>
   </header>
 
   <main id="main" class="inside">
     {# A phone has no room to set titles beside the wells. There the plate is printed whole, under the masthead,
-       and the rows below list each topic's titles without wells. This block is not shown on wider screens. #}
+       each row under its topic's name, and the rows below list each topic's titles without wells. This block is
+       not shown on wider screens. #}
     <div class="plate" role="group" aria-label="Plate">
       {% for row in edition.plate %}
-      <a class="pr" href="#row-{{ row.beat.row }}" aria-label="Row {{ row.beat.row }}, {{ row.beat.name }}">{{ row.beat.row }}</a>
+      <a class="cap pt" href="#row-{{ row.beat.row }}">{{ row.beat.name }}</a>
+      <a class="pr" href="#row-{{ row.beat.row }}" tabindex="-1" aria-hidden="true">{{ row.beat.row }}</a>
       {{ dots(row, edition, root, loop.index0) }}
       {% endfor %}
     </div>
