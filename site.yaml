@@ -2,8 +2,8 @@
 name: Assay
 tagline: A monthly review of AI for science
 description: >-
-  A monthly review of open work in AI for science: papers, reports, datasets, software and funding calls,
-  each with an independent assessment.
+  An overlay journal reviewing the month's most important work in AI for science, from research agents and
+  machine-written proofs to drug discovery, climate models, and science funding.
 url: ""              # set to the public address once deployed, e.g. https://assay.example
 editor: ""           # the signing editor's name; shown when set
 contact: ""          # an address for corrections and replies; shown when set

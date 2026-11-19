@@ -2,6 +2,8 @@
 {% from "macros.html" import dots %}
 {% block title %}{% if is_home %}{{ site.name }}: {{ site.tagline }}{% else %}No. {{ edition.number }}, {{ edition.title }} | {{ site.name }}{% endif %}{% endblock %}
 {% block description %}{% if is_home %}{{ site.description }}{% else %}{{ edition.dek }}{% endif %}{% endblock %}
+{# A link to the home page is titled with the name alone; its description says the rest. #}
+{% block card_title %}{% if is_home %}{{ site.name }}{% else %}{{ super() }}{% endif %}{% endblock %}
 {% block body_class %}cover-page{% endblock %}
 {% block page %}
 {% set ed = root ~ 'editions/' ~ edition.slug ~ '/' %}
