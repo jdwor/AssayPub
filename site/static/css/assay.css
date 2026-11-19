@@ -426,4 +426,7 @@ a.d:focus-visible { outline-offset: 5px; }
   .items { gap: 0 1.1rem; }
   .item { font-size: 0.98rem; line-height: 1.2; }
   .item.lead { font-size: 1.14rem; }
+  .ednav { padding-top: 0.8rem; }
+  .ednav a { padding: 0.3rem 0.15rem 0.24rem; font-size: 1.2rem; }
+  .ednav b { font-size: 1.6rem; }
 }

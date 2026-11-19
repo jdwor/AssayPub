@@ -383,19 +383,38 @@ def main():
         ctx.setdefault("page_url", f"{site['url']}/{path.removesuffix('index.html')}" if site.get("url") else "")
         out.write_text(env.get_template(template).render(root=root, path=path, **ctx).replace("@root/", root))
 
+    # An edition is read in order, like an issue of a journal: its cover (the contents), the editorial, the list
+    # of selected works, their assessments by well, the shortlist, and then the cover of the edition after it.
+    # Each page of that run links to the one before and the one after.
+    def step(href, label, title):
+        return {"href": href, "label": label, "title": title}
+
+    def reading_order(e):
+        run = [step(f"editions/{e['slug']}/", "Contents", f"No. {e['number']} · {e['period_label']}"),
+               step(f"editions/{e['slug']}/editorial/", "Editorial", e.get("subject") or e["title"])]
+        count = lambda n: f"{n} work{'' if n == 1 else 's'}"
+        if e["works"]:
+            run.append(step(f"editions/{e['slug']}/selected/", "Selected", count(len(e["works"]))))
+        run += [step(f"works/{w['slug']}/", w["well"], w["short"]) for w in e["works"]]
+        if e.get("shortlist"):
+            run.append(step(f"editions/{e['slug']}/shortlist/", "Shortlist", count(len(e["shortlist"]))))
+        after = e.get("next")
+        run.append(step(f"editions/{after['slug']}/", f"No. {after['number']}", after["period_label"]) if after else None)
+        return {s["href"]: {"prev": run[i - 1], "next": run[i + 1]} for i, s in enumerate(run[:-1]) if i}
+
     page("index.html", "edition.html", edition=current, is_home=True, section="current")
     page("editions/index.html", "editions.html", section="editions")
+    flow = {}
     for e in editions:
+        flow.update(reading_order(e))
         page(f"editions/{e['slug']}/index.html", "edition.html", edition=e, is_home=False, section="editions")
-        for part in ("editorial", "shortlist"):
-            page(f"editions/{e['slug']}/{part}/index.html", "edition_part.html", edition=e, part=part, section="editions")
+        for part in ("editorial", "selected", "shortlist"):
+            at = f"editions/{e['slug']}/{part}/"
+            page(f"{at}index.html", "edition_part.html", edition=e, part=part, section="editions", **flow.get(at, {}))
     by_ed = {e["slug"]: e for e in editions}
     for w in works:
         e = by_ed.get(w["edition"]) or fail(f"{w['slug']}: edition '{w['edition']}' does not exist")
-        sibs = e["works"]
-        i = sibs.index(w)
-        page(f"works/{w['slug']}/index.html", "work.html", work=w, edition=e, section="editions",
-             prev=sibs[i - 1] if i else None, next=sibs[i + 1] if i + 1 < len(sibs) else None)
+        page(f"works/{w['slug']}/index.html", "work.html", work=w, edition=e, section="editions", **flow[f"works/{w['slug']}/"])
 
     def topic_ctx(b):
         sel = [w for w in works if w["beat"] == b["slug"]]

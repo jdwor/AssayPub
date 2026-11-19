@@ -59,6 +59,7 @@
       {% if edition.lead_html %}<div class="lead">{{ edition.lead_html|replace('@root/', root) }}</div>{% endif %}
       <a class="go cap" href="{{ ed }}editorial/">Read the editorial →</a>
       <nav class="ednav" aria-label="This edition">
+        {% if edition.works %}<a href="{{ ed }}selected/"><span>Selected</span><b>{{ edition.works|length }}</b></a>{% endif %}
         {% if edition.shortlist %}<a href="{{ ed }}shortlist/"><span>Shortlist</span><b>{{ edition.shortlist|length }}</b></a>{% endif %}
         {% if edition.followups %}<a href="{{ ed }}editorial/#follow-ups"><span>Follow-ups</span><b>{{ edition.followups|length }}</b></a>{% endif %}
       </nav>

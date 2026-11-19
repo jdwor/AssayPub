@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% from "macros.html" import short_item %}
-{% set names = {'editorial': 'Editorial', 'shortlist': 'Shortlist'} %}
+{% from "macros.html" import work_item, short_item, pager %}
+{% set names = {'editorial': 'Editorial', 'selected': 'Selected', 'shortlist': 'Shortlist'} %}
 {% block title %}{{ names[part] }}, No. {{ edition.number }} | {{ site.name }}{% endblock %}
 {% block description %}{{ edition.dek }}{% endblock %}
 {% block where %}<a href="{{ root }}editions/{{ edition.slug }}/">No. {{ edition.number }} · {{ edition.period_label }}</a> · {{ names[part] }}{% endblock %}
@@ -23,6 +23,7 @@
     <nav class="sidenav tabs cap" aria-label="This edition">
       <a href="{{ ed }}">Contents</a>
       <a href="{{ ed }}editorial/"{% if part == 'editorial' %} aria-current="page"{% endif %}>Editorial</a>
+      {% if edition.works %}<a href="{{ ed }}selected/"{% if part == 'selected' %} aria-current="page"{% endif %}>Selected</a>{% endif %}
       {% if edition.shortlist %}<a href="{{ ed }}shortlist/"{% if part == 'shortlist' %} aria-current="page"{% endif %}>Shortlist</a>{% endif %}
     </nav>
   </aside>
@@ -64,6 +65,21 @@
     </section>
     {% endif %}
 
+  {% elif part == 'selected' %}
+    {# The edition's assessments as a list, by row: what the cover prints as short titles, in full. #}
+    <p class="cap wide-only">No. {{ edition.number }} · {{ edition.period_label }}</p>
+    <h1>Selected</h1>
+    {% for row in edition.plate %}
+    {% if row.works %}
+    <section class="sec">
+      <h2 class="rowhead"><b>{{ row.beat.row }}</b><a class="cap" href="{{ root }}topics/{{ row.beat.slug }}/">{{ row.beat.name }}</a></h2>
+      <ul class="wl">
+        {% for w in row.works %}{{ work_item(w, root) }}{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+    {% endfor %}
+
   {% else %}
     <p class="cap wide-only">No. {{ edition.number }} · {{ edition.period_label }}</p>
     <h1>Shortlist</h1>
@@ -81,5 +97,7 @@
 
   {% endif %}
   </article>
+
+  {{ pager(prev, next, root) }}
 </div>
 {% endblock %}

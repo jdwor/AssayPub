@@ -25,6 +25,15 @@
 <span class="mini" aria-hidden="true">{% for row in edition.plate %}{% for cell in row.cells %}<i{% if cell.kind == 'selected' %} class="x"{% elif cell.kind == 'shortlisted' %} class="s"{% endif %}></i>{% endfor %}{% endfor %}</span>
 {% endmacro %}
 
+{# The foot of each page of an edition: the page before it and the page after it in the reading order (contents,
+   editorial, the assessments by well, shortlist, the next edition). #}
+{% macro pager(prev, next, root) %}
+<nav class="pager" aria-label="Reading order">
+  {% if prev %}<a href="{{ root }}{{ prev.href }}" rel="prev"><span class="cap">← {{ prev.label }}</span><span class="t">{{ prev.title }}</span></a>{% else %}<span></span>{% endif %}
+  {% if next %}<a href="{{ root }}{{ next.href }}" rel="next"><span class="cap">{{ next.label }} →</span><span class="t">{{ next.title }}</span></a>{% endif %}
+</nav>
+{% endmacro %}
+
 {# A selected work in a list. #}
 {% macro work_item(w, root, show_edition=false) %}
 <li{% if w.tier == 'lead' %} class="lead"{% endif %}>
